@@ -1,21 +1,13 @@
-from pathlib import Path
+<!DOCTYPE html>
 
-html = r'''<!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Akademia TSL – zlecenia transportowe bez pułapek</title>
-
-  <meta
-    name="description"
-    content="Praktyczna wiedza prawna dla przewoźników. Pobierz bezpłatny poradnik i poznaj 7 zapisów w zleceniu transportowym, przez które przewoźnicy tracą pieniądze."
-  >
-
-  <meta name="theme-color" content="#092746">
-
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Akademia TSL – zlecenia transportowe bez pułapek</title>
+<meta content="Praktyczna wiedza prawna dla przewoźników. Pobierz bezpłatny poradnik i poznaj 7 zapisów w zleceniu transportowym, przez które przewoźnicy tracą pieniądze." name="description"/>
+<meta content="#092746" name="theme-color"/>
+<style>
     :root {
       --navy: #092746;
       --navy-dark: #061b31;
@@ -513,12 +505,7 @@ html = r'''<!DOCTYPE html>
       background: var(--navy);
       font-weight: 900;
     }
-
-    .risk-card:nth-child(7) {
-      grid-column: 2 / span 2;
-    }
-
-    .risk-card p {
+.risk-card p {
       font-size: 0.96rem;
     }
 
@@ -656,6 +643,15 @@ html = r'''<!DOCTYPE html>
       color: var(--navy);
       font-size: 0.76rem;
       font-weight: 900;
+    }
+
+
+    .ebook-cover-image {
+      width: min(430px, 92%);
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 28px 42px rgba(0, 0, 0, 0.28));
+      transform: rotate(-1deg);
     }
 
     .ebook-content {
@@ -1227,12 +1223,7 @@ html = r'''<!DOCTYPE html>
       .risk-grid {
         grid-template-columns: repeat(2, 1fr);
       }
-
-      .risk-card:nth-child(7) {
-        grid-column: auto;
-      }
-
-      .consequence-grid,
+.consequence-grid,
       .benefit-grid,
       .trust-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -1418,1045 +1409,561 @@ html = r'''<!DOCTYPE html>
     }
   </style>
 </head>
-
 <body>
-
 <header>
-  <div class="container">
-    <nav>
-      <a class="logo" href="#start" aria-label="Akademia TSL – strona główna">
-        <img
-          class="logo-image"
-          src="logo-akademia-tsl.jpg.png"
-          alt="Akademia TSL"
-        >
-      </a>
-
-      <button
-        class="mobile-toggle"
-        type="button"
-        aria-label="Otwórz menu"
-        aria-expanded="false"
-      >
+<div class="container">
+<nav>
+<a aria-label="Akademia TSL – strona główna" class="logo" href="#start">
+<img alt="Akademia TSL" class="logo-image" src="logo-akademia-tsl.jpg.png"/>
+</a>
+<button aria-expanded="false" aria-label="Otwórz menu" class="mobile-toggle" type="button">
         ☰
       </button>
+<ul class="menu">
 
-      <ul class="menu">
-        <li><a href="#ryzyka">7 ryzyk</a></li>
-        <li><a href="#poradnik">Darmowy poradnik</a></li>
-        <li><a href="#szkolenie">Szkolenie</a></li>
-        <li><a href="#o-autorce">O autorce</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="#kontakt">Kontakt</a></li>
-      </ul>
-    </nav>
-  </div>
+<li><a href="#poradnik">Darmowy poradnik</a></li>
+<li><a href="#szkolenie">Szkolenie</a></li>
+<li><a href="o-autorce.html">O autorce</a></li>
+
+<li><a href="#kontakt">Kontakt</a></li>
+</ul>
+</nav>
+</div>
 </header>
-
 <main>
-
-  <!-- 1. HERO -->
-
-  <section class="hero" id="start">
-    <div class="container hero-grid">
-      <div class="hero-copy reveal">
-        <span class="eyebrow">Prawo transportowe w praktyce</span>
-
-        <h1>
+<!-- 1. HERO -->
+<section class="hero" id="start">
+<div class="container hero-grid">
+<div class="hero-copy reveal">
+<span class="eyebrow">Prawo transportowe w praktyce</span>
+<h1>
           Sprawdź zlecenie,
           <span>zanim je zaakceptujesz</span>
-        </h1>
-
-        <p class="lead">
-          Naucz się rozpoznawać zapisy, które mogą prowadzić do kary,
-          potrącenia frachtu, późniejszej płatności albo kosztownego sporu.
-          Zanim kierowca ruszy w trasę.
-        </p>
-
-        <div class="button-row">
-          <a class="button button-primary" href="#poradnik">
+</h1>
+<p class="lead">Pobierz bezpłatny PDF i sprawdź, które zapisy w zleceniach transportowych mogą kosztować Cię nawet kilka tysięcy złotych.</p>
+<div class="button-row">
+<a class="button button-primary" href="#poradnik">
             Chcę darmowy poradnik
           </a>
 
-          <a class="button button-secondary" href="#szkolenie">
-            Poznaj szkolenie
-          </a>
-        </div>
-
-        <div class="hero-badge">
-          <span>✓</span>
+</div>
+<div class="hero-badge">
+<span>✓</span>
           Praktyczna checklista do wykorzystania przed akceptacją
         </div>
-      </div>
-
-      <div class="scan-card reveal">
-        <div class="scan-top">
-          <div>
-            <span class="eyebrow">Analiza zlecenia</span>
-            <div class="scan-title">Fragment dokumentu po kontroli</div>
+</div>
+<div class="scan-card reveal">
+<div class="scan-top">
+<div>
+<span class="eyebrow">Analiza zlecenia</span>
+<div class="scan-title">Fragment dokumentu po kontroli</div>
+</div>
+<span class="scan-status">⚠ wykryto ryzyko</span>
+</div>
+<div class="paper">
+<div class="paper-line">
+<strong>Termin załadunku:</strong> zgodnie ze zleceniem.
           </div>
-
-          <span class="scan-status">⚠ wykryto ryzyko</span>
-        </div>
-
-        <div class="paper">
-          <div class="paper-line">
-            <strong>Termin załadunku:</strong> zgodnie ze zleceniem.
-          </div>
-
-          <div class="paper-line marked">
+<div class="paper-line marked">
             W przypadku jakiegokolwiek opóźnienia przewoźnik zapłaci
             karę umowną w wysokości 100% frachtu.
             <div class="law-note">
               Czy kara obejmuje również zdarzenia niezależne od przewoźnika?
             </div>
-          </div>
-
-          <div class="paper-line warning">
+</div>
+<div class="paper-line warning">
             Termin płatności wynosi 60 dni od otrzymania kompletu
             prawidłowo wystawionych dokumentów.
             <div class="law-note" style="color: var(--orange);">
               Od kiedy naprawdę zaczyna biec termin płatności?
             </div>
-          </div>
-
-          <div class="paper-line marked">
+</div>
+<div class="paper-line marked">
             Zleceniodawca jest uprawniony do jednostronnego potrącenia
             wszelkich należności z wynagrodzenia przewoźnika.
             <div class="law-note">
               Jedno zdanie może pomniejszyć cały fracht.
             </div>
-          </div>
-
-          <div class="paper-line">
+</div>
+<div class="paper-line">
             Pozostałe warunki zgodnie z treścią zlecenia i załączników.
           </div>
-        </div>
+</div>
 
-        <div class="scan-footer">
-          <strong>Największe ryzyko bywa zapisane drobnym drukiem.</strong>
-          <span>Poradnik pokazuje, gdzie go szukać i o co zapytać.</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="trust-strip">
-      <div class="container trust-grid">
-        <div class="trust-item">
-          <span>§</span>
-          Materiał przygotowany przez adwokata
-        </div>
-
-        <div class="trust-item">
-          <span>7</span>
+</div>
+</div>
+<div class="trust-strip">
+<div class="container trust-grid">
+<div class="trust-item"><span>§</span> Materiał przygotowany przez prawnika</div>
+<div class="trust-item">
+<span>7</span>
           Siedem najczęstszych czerwonych flag
         </div>
-
-        <div class="trust-item">
-          <span>PDF</span>
+<div class="trust-item">
+<span>PDF</span>
           Bezpłatny poradnik do pobrania
         </div>
-
-        <div class="trust-item">
-          <span>✓</span>
+<div class="trust-item">
+<span>✓</span>
           Checklista do wykorzystania w firmie
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 2. SIEDEM RYZYK -->
-
-  <section class="section" id="ryzyka">
-    <div class="container">
-      <div class="section-intro reveal">
-        <span class="eyebrow">Siedem czerwonych flag</span>
-
-        <h2>
+</div>
+</div>
+</section>
+<!-- 2. SIEDEM RYZYK -->
+<section class="section" id="ryzyka">
+<div class="container">
+<div class="section-intro reveal">
+<span class="eyebrow">Siedem czerwonych flag</span>
+<h2>
           Siedem zapisów, przez które przewoźnicy tracą pieniądze
         </h2>
-
-        <p class="lead">
-          Niepozorne postanowienia mogą zdecydować o wysokości frachtu,
-          terminie zapłaty i zakresie odpowiedzialności przewoźnika.
-          Właśnie te miejsca warto sprawdzać w pierwszej kolejności.
-        </p>
-      </div>
-
-      <div class="risk-grid">
-        <article class="risk-card reveal">
-          <div class="risk-number">01</div>
-          <h3>Kary umowne</h3>
-          <p>
+<p class="lead">Poznaj 7 zapisów, które najczęściej prowadzą do kar umownych, potrąceń frachtu i problemów z płatnością.</p>
+</div>
+<div class="risk-grid">
+<article class="risk-card reveal">
+<div class="risk-number">01</div>
+<h3>Kary umowne</h3>
+<p>
             Sprawdź, czy kara nie jest naliczana automatycznie, bez względu
             na winę przewoźnika i rzeczywistą wysokość szkody.
           </p>
-          <div class="risk-hook">Jedno opóźnienie może kosztować cały fracht.</div>
-        </article>
-
-        <article class="risk-card reveal">
-          <div class="risk-number">02</div>
-          <h3>Dokumenty przewozowe</h3>
-          <p>
+<div class="risk-hook">Jedno opóźnienie może kosztować cały fracht.</div>
+</article>
+<article class="risk-card reveal">
+<div class="risk-number">02</div>
+<h3>Dokumenty przewozowe</h3>
+<p>
             Brak podpisu, pieczęci albo przekroczenie terminu wysłania
             dokumentów może uruchomić karę lub wstrzymać płatność.
           </p>
-          <div class="risk-hook">Formalność bywa droższa niż sam błąd.</div>
-        </article>
-
-        <article class="risk-card reveal">
-          <div class="risk-number">03</div>
-          <h3>Jednostronne potrącenie</h3>
-          <p>
+<div class="risk-hook">Formalność bywa droższa niż sam błąd.</div>
+</article>
+<article class="risk-card reveal">
+<div class="risk-number">03</div>
+<h3>Jednostronne potrącenie</h3>
+<p>
             Zleceniodawca może zastrzec sobie możliwość samodzielnego
             pomniejszenia wynagrodzenia przewoźnika.
           </p>
-          <div class="risk-hook">Fracht może zniknąć bez Twojej zgody.</div>
-        </article>
-
-        <article class="risk-card reveal">
-          <div class="risk-number">04</div>
-          <h3>Zakaz kontaktu</h3>
-          <p>
+<div class="risk-hook">Fracht może zniknąć bez Twojej zgody.</div>
+</article>
+<article class="risk-card reveal">
+<div class="risk-number">04</div>
+<h3>Zakaz kontaktu</h3>
+<p>
             Zbyt szeroki zakaz kontaktowania się z nadawcą lub odbiorcą
             może obejmować również działania potrzebne do wykonania przewozu.
           </p>
-          <div class="risk-hook">Kierowca dzwoni – firma płaci karę.</div>
-        </article>
-
-        <article class="risk-card reveal">
-          <div class="risk-number">05</div>
-          <h3>Zakaz podzlecania</h3>
-          <p>
+<div class="risk-hook">Kierowca dzwoni – firma płaci karę.</div>
+</article>
+<article class="risk-card reveal">
+<div class="risk-number">05</div>
+<h3>Zakaz podzlecania</h3>
+<p>
             Powierzenie transportu innemu przewoźnikowi bez wymaganej zgody
             może skutkować karą sięgającą znacznej części frachtu.
           </p>
-          <div class="risk-hook">Sprawdź zapis przed zmianą auta lub podwykonawcy.</div>
-        </article>
-
-        <article class="risk-card reveal">
-          <div class="risk-number">06</div>
-          <h3>Neutralizacja dokumentów</h3>
-          <p>
+<div class="risk-hook">Sprawdź zapis przed zmianą auta lub podwykonawcy.</div>
+</article>
+<article class="risk-card reveal">
+<div class="risk-number">06</div>
+<h3>Neutralizacja dokumentów</h3>
+<p>
             Niejasne obowiązki związane z zakrywaniem danych lub zmianą
             dokumentów mogą prowadzić do wielokrotnych sankcji.
           </p>
-          <div class="risk-hook">Jedno zlecenie, kilka dokumentów, kilka kar.</div>
-        </article>
-
-        <article class="risk-card reveal">
-          <div class="risk-number">07</div>
-          <h3>Termin płatności</h3>
-          <p>
+<div class="risk-hook">Jedno zlecenie, kilka dokumentów, kilka kar.</div>
+</article>
+<article class="risk-card reveal">
+<div class="risk-number">07</div>
+<h3>Termin płatności</h3>
+<p>
             Deklarowane 45 albo 60 dni może zacząć biec dopiero po otrzymaniu
             kompletu dokumentów uznanych przez kontrahenta za prawidłowe.
           </p>
-          <div class="risk-hook">„60 dni” nie zawsze oznacza 60 dni.</div>
-        </article>
-      </div>
-
-      <div class="risk-cta reveal">
-        <p>
+<div class="risk-hook">„60 dni” nie zawsze oznacza 60 dni.</div>
+</article>
+</div>
+<div class="risk-cta reveal">
+<p>
           W bezpłatnym poradniku pokazuję, jak rozpoznać każdą z tych
           klauzul, jakie może wywołać skutki i co sprawdzić przed akceptacją.
         </p>
-
-        <a class="button button-primary" href="#poradnik">
+<a class="button button-primary" href="#poradnik">
           Wyślij mi poradnik
         </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- 3. PORADNIK -->
-
-  <section class="section section-light" id="poradnik">
-    <div class="container">
-      <div class="ebook-panel reveal">
-        <div class="ebook-cover-area">
-          <div class="ebook-mockup-wrap">
-            <div class="ebook-mockup">
-              <div class="ebook-mini-logo">Akademia TSL</div>
-
-              <h3>
-                7 zapisów w zleceniu transportowym,
-                <span>przez które przewoźnicy tracą pieniądze</span>
-              </h3>
-
-              <p>
-                Praktyczna checklista: co sprawdzić przed zaakceptowaniem
-                zlecenia transportowego.
-              </p>
-
-              <div class="ebook-icons">
-                <span>K</span>
-                <span>CMR</span>
-                <span>€</span>
-                <span>60D</span>
-                <span>7</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="ebook-content">
-          <span class="eyebrow">Bezpłatny poradnik</span>
-
-          <h2>
+</div>
+</div>
+</section>
+<!-- 3. PORADNIK -->
+<section class="section section-light" id="poradnik">
+<div class="container">
+<div class="ebook-panel reveal">
+<div class="ebook-cover-area"><img alt="Poradnik Akademii TSL – 7 zapisów w zleceniu transportowym" class="ebook-cover-image" src="mokeup.png"/></div>
+<div class="ebook-content">
+<span class="eyebrow">Bezpłatny poradnik</span>
+<h2>
             Zobacz, co naprawdę podpisujesz
           </h2>
-
-          <p>
+<p>
             To nie jest ogólny wykład z prawa. To praktyczny materiał,
             który pomoże Ci szybciej wychwycić miejsca wymagające
             dodatkowej uwagi przed przyjęciem transportu.
           </p>
-
-          <ul class="checklist">
-            <li>
+<ul class="checklist">
+<li>
               rozpoznasz siedem klauzul, które najczęściej prowadzą
               do kar, potrąceń i opóźnień w płatności,
             </li>
-
-            <li>
+<li>
               zobaczysz przykłady zapisów występujących w rzeczywistych
               zleceniach transportowych,
             </li>
-
-            <li>
+<li>
               dowiesz się, jakie konsekwencje może wywołać zaakceptowanie
               każdej z opisanych klauzul,
             </li>
-
-            <li>
+<li>
               poznasz pytania, które warto zadać zleceniodawcy
               przed zaakceptowaniem dokumentu,
             </li>
-
-            <li>
+<li>
               otrzymasz prostą checklistę kontroli zlecenia
               do wykorzystania przez właściciela, spedytora lub dyspozytora,
             </li>
-
-            <li>
+<li>
               zyskasz schemat szybkiej weryfikacji bez czytania
               każdego zlecenia jak rozprawy doktorskiej.
             </li>
-          </ul>
-
-          <form
-            class="mini-form"
-            name="pobranie-poradnika"
-            method="POST"
-            data-netlify="true"
-          >
-            <input type="hidden" name="form-name" value="pobranie-poradnika">
-
-            <h3>Wyślij mi bezpłatny poradnik</h3>
-
-            <div class="form-grid">
-              <label>
+</ul>
+<form class="mini-form" data-netlify="true" method="POST" name="pobranie-poradnika">
+<input name="form-name" type="hidden" value="pobranie-poradnika"/>
+<h3>Wyślij mi bezpłatny poradnik</h3>
+<div class="form-grid">
+<label>
                 Imię
-                <input
-                  type="text"
-                  name="imie"
-                  autocomplete="given-name"
-                  required
-                >
-              </label>
-
-              <label>
+                <input autocomplete="given-name" name="imie" required="" type="text"/>
+</label>
+<label>
                 Adres e-mail
-                <input
-                  type="email"
-                  name="email"
-                  autocomplete="email"
-                  required
-                >
-              </label>
-            </div>
-
-            <label class="consent">
-              <input type="checkbox" name="zgoda" value="tak" required>
-
-              <span>
+                <input autocomplete="email" name="email" required="" type="email"/>
+</label>
+</div>
+<label class="consent">
+<input name="zgoda" required="" type="checkbox" value="tak"/>
+<span>
                 Chcę otrzymać poradnik oraz informacje związane
                 z materiałami Akademii TSL. Zgodę mogę wycofać
                 w dowolnym momencie.
               </span>
-            </label>
-
-            <button class="button button-primary button-full" type="submit">
+</label>
+<button class="button button-primary button-full" type="submit">
               Tak, wyślij mi poradnik
             </button>
-
-            <p class="form-note">
+<p class="form-note">
               Poradnik jest bezpłatny. Materiał ma charakter informacyjny
               i nie zastępuje indywidualnej porady prawnej.
             </p>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 4. SZKOLENIE -->
-
-  <section class="section" id="szkolenie">
-    <div class="container training-grid">
-      <div class="reveal">
-        <span class="eyebrow">Szkolenie i pakiet dokumentów</span>
-
-        <h2>
+</form>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. SZKOLENIE -->
+<section class="section" id="szkolenie">
+<div class="container training-grid">
+<div class="reveal">
+<span class="eyebrow">Szkolenie i pakiet dokumentów</span>
+<h2>
           Pełny system analizy zleceń transportowych
         </h2>
-
-        <p class="lead">
+<p class="lead">
           Poradnik pokazuje siedem najczęstszych pułapek. Szkolenie
           idzie krok dalej: uczy, jak analizować całe zlecenie,
           reagować na niekorzystne warunki i wdrożyć w firmie
           powtarzalną procedurę kontroli.
         </p>
-
-        <div class="training-steps">
-          <article class="training-step">
-            <span>1</span>
-            <strong>Szkolenie online w modułach</strong>
-            <p>
+<div class="training-steps">
+<article class="training-step">
+<span>1</span>
+<strong>Szkolenie online w modułach</strong>
+<p>
               Konkretne lekcje, przykłady zapisów i omówienie skutków
               prawnych oraz finansowych.
             </p>
-          </article>
-
-          <article class="training-step">
-            <span>2</span>
-            <strong>Lista 30 ryzykownych klauzul</strong>
-            <p>
+</article>
+<article class="training-step">
+<span>2</span>
+<strong>Lista 30 ryzykownych klauzul</strong>
+<p>
               Rozszerzony katalog zapisów, które warto sprawdzać
               przed każdym transportem.
             </p>
-          </article>
-
-          <article class="training-step">
-            <span>3</span>
-            <strong>Checklista czerwonych flag</strong>
-            <p>
+</article>
+<article class="training-step">
+<span>3</span>
+<strong>Checklista czerwonych flag</strong>
+<p>
               Gotowy dokument do wykorzystania przez właściciela,
               spedytora lub dyspozytora.
             </p>
-          </article>
-
-          <article class="training-step">
-            <span>4</span>
-            <strong>Wzory odpowiedzi do spedycji</strong>
-            <p>
+</article>
+<article class="training-step">
+<span>4</span>
+<strong>Wzory odpowiedzi do spedycji</strong>
+<p>
               Gotowe propozycje reakcji na niekorzystne postanowienia
               i próby jednostronnego obciążenia.
             </p>
-          </article>
-
-          <article class="training-step">
-            <span>5</span>
-            <strong>Wzory zastrzeżeń do zlecenia</strong>
-            <p>
+</article>
+<article class="training-step">
+<span>5</span>
+<strong>Wzory zastrzeżeń do zlecenia</strong>
+<p>
               Praktyczne klauzule, które można wykorzystać
               przed zaakceptowaniem dokumentu.
             </p>
-          </article>
-
-          <article class="training-step">
-            <span>6</span>
-            <strong>Procedura kontroli przed akceptacją</strong>
-            <p>
+</article>
+<article class="training-step">
+<span>6</span>
+<strong>Procedura kontroli przed akceptacją</strong>
+<p>
               Jasny schemat: co sprawdzić, kto ma to zrobić
               i kiedy należy zatrzymać akceptację.
             </p>
-          </article>
-
-          <article class="training-step">
-            <span>7</span>
-            <strong>Pakiet dokumentów firmowych</strong>
-            <p>
+</article>
+<article class="training-step">
+<span>7</span>
+<strong>Pakiet dokumentów firmowych</strong>
+<p>
               Materiały, które pomagają ujednolicić pracę zespołu
               i ograniczyć decyzje podejmowane „na wyczucie”.
             </p>
-          </article>
-
-          <article class="training-step">
-            <span>8</span>
-            <strong>Materiały do ponownego wykorzystania</strong>
-            <p>
+</article>
+<article class="training-step">
+<span>8</span>
+<strong>Materiały do ponownego wykorzystania</strong>
+<p>
               Dokumenty pozostają w firmie i mogą być stosowane
               przy kolejnych zleceniach.
             </p>
-          </article>
-        </div>
-      </div>
-
-      <aside class="price-card reveal">
-        <span class="eyebrow">Planowana premiera</span>
-
-        <h3>Zlecenie transportowe bez pułapek</h3>
-
-        <p>
+</article>
+</div>
+</div>
+<aside class="price-card reveal">
+<span class="eyebrow">Planowana premiera</span>
+<h3>Zlecenie transportowe bez pułapek</h3>
+<p>
           Jak ograniczyć ryzyko kar, potrąceń i utraty części
           wynagrodzenia jeszcze przed przyjęciem transportu.
         </p>
-
-        <div class="price">297 zł</div>
-
-        <div class="price-caption">
+<div class="price">297 zł</div>
+<div class="price-caption">
           planowana cena premierowa
         </div>
-
-        <ul class="price-details">
-          <li>szkolenie online dostępne z dowolnego miejsca,</li>
-          <li>lista 30 ryzykownych klauzul,</li>
-          <li>checklisty, procedury i wzory dokumentów,</li>
-          <li>gotowe odpowiedzi i zastrzeżenia do zleceń,</li>
-          <li>materiały do wykorzystania w codziennej pracy firmy.</li>
-        </ul>
-
-        <div class="coming-badge">
+<ul class="price-details">
+<li>szkolenie online dostępne z dowolnego miejsca,</li>
+<li>lista 30 ryzykownych klauzul,</li>
+<li>checklisty, procedury i wzory dokumentów,</li>
+<li>gotowe odpowiedzi i zastrzeżenia do zleceń,</li>
+<li>materiały do wykorzystania w codziennej pracy firmy.</li>
+</ul>
+<div class="coming-badge">
           Zapisz się na listę zainteresowanych, aby otrzymać informację
           o premierze i warunkach startowych.
         </div>
-
-        <div class="button-row">
-          <a class="button button-primary" href="#kontakt">
+<div class="button-row">
+<a class="button button-primary" href="#kontakt">
             Zapisz mnie na listę
           </a>
-        </div>
-      </aside>
-    </div>
-  </section>
-
-  <!-- 5. KONSEKWENCJE -->
-
-  <section class="section section-navy">
-    <div class="container">
-      <div class="section-intro center reveal">
-        <span class="eyebrow">Koszt jednego zdania</span>
-
-        <h2 style="color: white;">
+</div>
+</aside>
+</div>
+</section>
+<!-- 5. KONSEKWENCJE -->
+<section class="section section-navy">
+<div class="container">
+<div class="section-intro center reveal">
+<span class="eyebrow">Koszt jednego zdania</span>
+<h2 style="color: white;">
           Jedna klauzula może kosztować znacznie więcej niż szkolenie
         </h2>
-
-        <p class="lead" style="color: rgba(255,255,255,.72);">
+<p class="lead" style="color: rgba(255,255,255,.72);">
           Celem nie jest czytanie zlecenia godzinami. Celem jest wiedzieć,
           które miejsca sprawdzić natychmiast.
         </p>
-      </div>
-
-      <div class="consequence-grid">
-        <article class="consequence-card reveal">
-          <div class="consequence-icon">100%</div>
-          <h3>Cały fracht</h3>
-          <p>
+</div>
+<div class="consequence-grid">
+<article class="consequence-card reveal">
+<div class="consequence-icon">100%</div>
+<h3>Cały fracht</h3>
+<p>
             Kara umowna może zostać określona jako równowartość
             całego wynagrodzenia za przewóz.
           </p>
-        </article>
-
-        <article class="consequence-card reveal">
-          <div class="consequence-icon">−€</div>
-          <h3>Potrącenie</h3>
-          <p>
+</article>
+<article class="consequence-card reveal">
+<div class="consequence-icon">−€</div>
+<h3>Potrącenie</h3>
+<p>
             Zleceniodawca może pomniejszyć płatność, zanim przewoźnik
             zdąży zakwestionować obciążenie.
           </p>
-        </article>
-
-        <article class="consequence-card reveal">
-          <div class="consequence-icon">60+</div>
-          <h3>Miesiące oczekiwania</h3>
-          <p>
+</article>
+<article class="consequence-card reveal">
+<div class="consequence-icon">60+</div>
+<h3>Miesiące oczekiwania</h3>
+<p>
             Błąd w dokumentach może przesunąć początek biegu
             terminu płatności.
           </p>
-        </article>
-
-        <article class="consequence-card reveal">
-          <div class="consequence-icon">§</div>
-          <h3>Kosztowny spór</h3>
-          <p>
+</article>
+<article class="consequence-card reveal">
+<div class="consequence-icon">§</div>
+<h3>Kosztowny spór</h3>
+<p>
             Brak reakcji na początku utrudnia późniejsze odzyskanie
             pełnej należności.
           </p>
-        </article>
-      </div>
-    </div>
-  </section>
+</article>
+</div>
+</div>
+</section>
+<!-- 6. DLA KOGO -->
 
-  <!-- 6. DLA KOGO -->
+<!-- 7. O AUTORCE -->
 
-  <section class="section section-light">
-    <div class="container">
-      <div class="section-intro center reveal">
-        <span class="eyebrow">Dla kogo jest Akademia TSL</span>
+<!-- 8. DLACZEGO AKADEMIA -->
 
-        <h2>
-          Dla wszystkich, którzy podejmują decyzje przed wysłaniem auta
-        </h2>
-      </div>
-
-      <div class="audience-grid">
-        <article class="audience-card reveal">
-          <div class="audience-label">01</div>
-          <h3>Właściciele firm transportowych</h3>
-          <p>
-            Dla przedsiębiorców, którzy chcą ograniczać ryzyko finansowe
-            i uporządkować zasady przyjmowania zleceń.
-          </p>
-        </article>
-
-        <article class="audience-card reveal">
-          <div class="audience-label">02</div>
-          <h3>Spedytorzy</h3>
-          <p>
-            Dla osób negocjujących warunki przewozu i odpowiadających
-            za wybór oraz akceptację zlecenia.
-          </p>
-        </article>
-
-        <article class="audience-card reveal">
-          <div class="audience-label">03</div>
-          <h3>Dyspozytorzy</h3>
-          <p>
-            Dla osób podejmujących szybkie decyzje operacyjne
-            pod presją czasu i dostępności pojazdów.
-          </p>
-        </article>
-
-        <article class="audience-card reveal">
-          <div class="audience-label">04</div>
-          <h3>Administracja transportowa</h3>
-          <p>
-            Dla pracowników odpowiedzialnych za dokumenty,
-            faktury, terminy i kompletność rozliczeń.
-          </p>
-        </article>
-
-        <article class="audience-card reveal">
-          <div class="audience-label">05</div>
-          <h3>Osoby rozliczające przewozy</h3>
-          <p>
-            Dla zespołów reagujących na noty obciążeniowe,
-            potrącenia i opóźnienia w płatnościach.
-          </p>
-        </article>
-
-        <article class="audience-card reveal">
-          <div class="audience-label">06</div>
-          <h3>Nowe firmy w branży TSL</h3>
-          <p>
-            Dla osób, które dopiero budują procedury i chcą uniknąć
-            kosztownej nauki metodą prób i błędów.
-          </p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- 7. O AUTORCE -->
-
-  <section class="section" id="o-autorce">
-    <div class="container about-grid">
-      <div class="author-photo reveal">
-        <div>
-          <strong>Miejsce na zdjęcie autorki</strong>
-          <span>adw. Jolanta Czesielska-Biel</span>
-        </div>
-      </div>
-
-      <div class="reveal">
-        <span class="eyebrow">O autorce</span>
-
-        <h2>
-          Prawo, które można zastosować przed kolejnym transportem
-        </h2>
-
-        <p class="lead">
-          Jestem adwokatem i zajmuję się obsługą prawną przedsiębiorców
-          z branży transportowej, spedycyjnej i logistycznej.
-        </p>
-
-        <p style="margin-top: 18px;">
-          W praktyce widzę, że wiele sporów nie zaczyna się przy rozładunku
-          ani przy wystawieniu noty. Zaczyna się wcześniej — w chwili,
-          gdy firma akceptuje zlecenie bez wychwycenia ryzykownego zapisu.
-        </p>
-
-        <p style="margin-top: 18px;">
-          Dlatego stworzyłam Akademię TSL: miejsce, w którym skomplikowane
-          klauzule przekładam na proste procedury, checklisty i gotowe
-          działania możliwe do zastosowania w codziennej pracy przewoźnika.
-        </p>
-
-        <div class="author-points">
-          <div class="author-point">Analiza zleceń i umów</div>
-          <div class="author-point">Obsługa prawna branży TSL</div>
-          <div class="author-point">Reprezentacja w sporach</div>
-          <div class="author-point">Szkolenia i materiały praktyczne</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 8. DLACZEGO AKADEMIA -->
-
-  <section class="section section-cream">
-    <div class="container">
-      <div class="section-intro center reveal">
-        <span class="eyebrow">Dlaczego Akademia TSL</span>
-
-        <h2>
-          Mniej teorii. Więcej decyzji, które chronią pieniądze firmy.
-        </h2>
-      </div>
-
-      <div class="benefit-grid">
-        <article class="benefit-card reveal">
-          <span>01</span>
-          <h3>Prosty język</h3>
-          <p>
-            Bez prawniczego labiryntu. Wiesz, czego szukać
-            i co dany zapis może oznaczać.
-          </p>
-        </article>
-
-        <article class="benefit-card reveal">
-          <span>02</span>
-          <h3>Praktyka branży TSL</h3>
-          <p>
-            Przykłady odnoszą się do realnych zleceń, dokumentów
-            i problemów przewoźników.
-          </p>
-        </article>
-
-        <article class="benefit-card reveal">
-          <span>03</span>
-          <h3>Gotowy sposób działania</h3>
-          <p>
-            Checklisty i procedury ograniczają przypadkowe decyzje
-            i pomagają ujednolicić pracę zespołu.
-          </p>
-        </article>
-
-        <article class="benefit-card reveal">
-          <span>04</span>
-          <h3>Ochrona wynagrodzenia</h3>
-          <p>
-            Celem jest ograniczenie kar, potrąceń, opóźnień
-            oraz kosztownych sporów.
-          </p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- 9. CTA -->
-
-  <section class="section">
-    <div class="container">
-      <div class="mid-cta reveal">
-        <div>
-          <span class="eyebrow">Pierwszy krok</span>
-          <h2>Sprawdź siedem zapisów przed kolejną akceptacją</h2>
-          <p>
+<!-- 9. CTA -->
+<section class="section">
+<div class="container">
+<div class="mid-cta reveal">
+<div>
+<span class="eyebrow">Pierwszy krok</span>
+<h2>Sprawdź siedem zapisów przed kolejną akceptacją</h2>
+<p>
             Pobierz bezpłatny poradnik i przekaż checklistę osobom,
             które przyjmują zlecenia w Twojej firmie.
           </p>
-        </div>
-
-        <a class="button button-primary" href="#poradnik">
+</div>
+<a class="button button-primary" href="#poradnik">
           Chcę otrzymać poradnik
         </a>
-      </div>
-    </div>
-  </section>
+</div>
+</div>
+</section>
+<!-- 10. FAQ -->
 
-  <!-- 10. FAQ -->
-
-  <section class="section section-light" id="faq">
-    <div class="container">
-      <div class="section-intro center reveal">
-        <span class="eyebrow">Najczęstsze pytania</span>
-        <h2>Pytania dotyczące poradnika i szkolenia</h2>
-      </div>
-
-      <div class="faq-list">
-        <details class="reveal">
-          <summary>Czy poradnik naprawdę jest bezpłatny?</summary>
-          <div class="faq-answer">
-            <p>
-              Tak. Poradnik otrzymasz bez opłat po zapisaniu się
-              przez formularz znajdujący się na stronie.
-            </p>
-          </div>
-        </details>
-
-        <details class="reveal">
-          <summary>Dla kogo przygotowano materiał?</summary>
-          <div class="faq-answer">
-            <p>
-              Przede wszystkim dla przewoźników, właścicieli firm
-              transportowych, spedytorów, dyspozytorów oraz osób
-              odpowiedzialnych za dokumenty i rozliczenia przewozów.
-            </p>
-          </div>
-        </details>
-
-        <details class="reveal">
-          <summary>Czy poradnik zawiera przykłady zapisów?</summary>
-          <div class="faq-answer">
-            <p>
-              Tak. Materiał pokazuje przykłady klauzul pojawiających się
-              w zleceniach i wyjaśnia, jakie mogą wywołać konsekwencje.
-            </p>
-          </div>
-        </details>
-
-        <details class="reveal">
-          <summary>Czy poradnik jest aktualny?</summary>
-          <div class="faq-answer">
-            <p>
-              Materiał został przygotowany na podstawie praktycznych
-              problemów występujących w obrocie transportowym.
-              Każdy konkretny przypadek może jednak wymagać
-              indywidualnej analizy.
-            </p>
-          </div>
-        </details>
-
-        <details class="reveal">
-          <summary>Czy poradnik zastępuje indywidualną poradę prawną?</summary>
-          <div class="faq-answer">
-            <p>
-              Nie. Poradnik ma charakter informacyjny i edukacyjny.
-              Konkretne zlecenie lub spór może wymagać odrębnej konsultacji.
-            </p>
-          </div>
-        </details>
-
-        <details class="reveal">
-          <summary>Jak otrzymam poradnik?</summary>
-          <div class="faq-answer">
-            <p>
-              Po prawidłowym zapisaniu się materiał zostanie wysłany
-              na wskazany adres e-mail.
-            </p>
-          </div>
-        </details>
-
-        <details class="reveal">
-          <summary>Czy szkolenie będzie nagrane i dostępne online?</summary>
-          <div class="faq-answer">
-            <p>
-              Tak. Planowane szkolenie będzie dostępne online,
-              aby można było korzystać z niego z dowolnego miejsca.
-            </p>
-          </div>
-        </details>
-
-        <details class="reveal">
-          <summary>Czy szkolenie jest także dla małych firm?</summary>
-          <div class="faq-answer">
-            <p>
-              Tak. Materiały są przygotowywane zarówno dla większych zespołów,
-              jak i dla małych firm, w których zlecenia analizuje właściciel
-              albo jedna osoba.
-            </p>
-          </div>
-        </details>
-
-        <details class="reveal">
-          <summary>Czy otrzymam fakturę za szkolenie?</summary>
-          <div class="faq-answer">
-            <p>
-              Tak. Przy sprzedaży szkolenia będzie możliwe otrzymanie
-              faktury na dane firmy.
-            </p>
-          </div>
-        </details>
-
-        <details class="reveal">
-          <summary>Kiedy rozpocznie się sprzedaż szkolenia?</summary>
-          <div class="faq-answer">
-            <p>
-              Termin premiery zostanie przekazany osobom zapisanym
-              na listę zainteresowanych.
-            </p>
-          </div>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- 11. KONTAKT -->
-
-  <section class="section" id="kontakt">
-    <div class="container contact-grid">
-      <div class="reveal">
-        <span class="eyebrow">Kontakt</span>
-
-        <h2>
+<!-- 11. KONTAKT -->
+<section class="section" id="kontakt">
+<div class="container contact-grid">
+<div class="reveal">
+<span class="eyebrow">Kontakt</span>
+<h2>
           Masz pytanie dotyczące Akademii TSL?
         </h2>
-
-        <p class="lead">
+<p class="lead">
           Napisz w sprawie poradnika, szkolenia, współpracy
           lub materiałów dla branży transportowej.
         </p>
-
-        <div class="contact-data">
-          <div class="contact-item">
-            <strong>Adres e-mail</strong>
-            <a href="mailto:biuro@lex-legal.pl">biuro@lex-legal.pl</a>
-          </div>
-
-          <div class="contact-item">
-            <strong>Autorka materiałów</strong>
-            <span>adw. Jolanta Czesielska-Biel</span>
-          </div>
-
-          <div class="contact-item">
-            <strong>Zakres tematyczny</strong>
-            <span>transport, spedycja, logistyka, umowy i zlecenia</span>
-          </div>
-        </div>
-      </div>
-
-      <form
-        class="contact-form reveal"
-        name="kontakt-akademia-tsl"
-        method="POST"
-        data-netlify="true"
-      >
-        <input type="hidden" name="form-name" value="kontakt-akademia-tsl">
-
-        <label>
+<div class="contact-data">
+<div class="contact-item">
+<strong>Adres e-mail</strong>
+<a href="mailto:biuro@lex-legal.pl">biuro@lex-legal.pl</a>
+</div>
+<div class="contact-item">
+<strong>Autorka materiałów</strong>
+<span>adw. Jolanta Czesielska-Biel</span>
+</div>
+<div class="contact-item">
+<strong>Zakres tematyczny</strong>
+<span>transport, spedycja, logistyka, umowy i zlecenia</span>
+</div>
+</div>
+</div>
+<form class="contact-form reveal" data-netlify="true" method="POST" name="kontakt-akademia-tsl">
+<input name="form-name" type="hidden" value="kontakt-akademia-tsl"/>
+<label>
           Imię i nazwisko
-          <input
-            type="text"
-            name="imie-i-nazwisko"
-            autocomplete="name"
-            required
-          >
-        </label>
-
-        <label>
+          <input autocomplete="name" name="imie-i-nazwisko" required="" type="text"/>
+</label>
+<label>
           Adres e-mail
-          <input
-            type="email"
-            name="email"
-            autocomplete="email"
-            required
-          >
-        </label>
-
-        <label>
+          <input autocomplete="email" name="email" required="" type="email"/>
+</label>
+<label>
           Temat
-          <input
-            type="text"
-            name="temat"
-            placeholder="np. lista zainteresowanych szkoleniem"
-          >
-        </label>
-
-        <label>
+          <input name="temat" placeholder="np. lista zainteresowanych szkoleniem" type="text"/>
+</label>
+<label>
           Wiadomość
-          <textarea name="wiadomosc" required></textarea>
-        </label>
-
-        <label class="consent">
-          <input type="checkbox" name="zgoda-kontakt" value="tak" required>
-
-          <span>
+          <textarea name="wiadomosc" required=""></textarea>
+</label>
+<label class="consent">
+<input name="zgoda-kontakt" required="" type="checkbox" value="tak"/>
+<span>
             Wyrażam zgodę na kontakt w sprawie przesłanej wiadomości.
           </span>
-        </label>
-
-        <button class="button button-primary" type="submit">
+</label>
+<button class="button button-primary" type="submit">
           Wyślij wiadomość
         </button>
-      </form>
-    </div>
-  </section>
-
+</form>
+</div>
+</section>
 </main>
-
 <footer>
-  <div class="container">
-    <div class="footer-cta">
-      <div>
-        <h3>Nie pozwól, by jedno zdanie zabrało cały fracht.</h3>
-        <p>Pobierz bezpłatną checklistę przed kolejną akceptacją.</p>
-      </div>
-
-      <a class="button button-primary" href="#poradnik">
+<div class="container">
+<div class="footer-cta">
+<div>
+<h3>Nie pozwól, by jedno zdanie zabrało cały fracht.</h3>
+<p>Pobierz bezpłatną checklistę przed kolejną akceptacją.</p>
+</div>
+<a class="button button-primary" href="#poradnik">
         Pobierz poradnik
       </a>
-    </div>
+</div>
+<div class="footer-grid">
+<div>
 
-    <div class="footer-grid">
-      <div>
-        <img
-          class="footer-logo"
-          src="logo-akademia-tsl.jpg.png"
-          alt="Akademia TSL"
-        >
-
-        <p style="margin-top: 18px; max-width: 470px;">
+<p style="margin-top: 18px; max-width: 470px;">
           Praktyczna wiedza prawna, szkolenia i materiały
           dla przewoźników oraz przedsiębiorców z branży TSL.
         </p>
 
-        <p style="margin-top: 12px;">
-          Autorka: adw. Jolanta Czesielska-Biel
-        </p>
-      </div>
+</div>
+<div>
+<h3>Akademia TSL</h3>
+<ul class="footer-links">
 
-      <div>
-        <h3>Akademia TSL</h3>
+<li><a href="#poradnik">Darmowy poradnik</a></li>
+<li><a href="#szkolenie">Szkolenie</a></li>
+<li><a href="o-autorce.html">O autorce</a></li>
 
-        <ul class="footer-links">
-          <li><a href="#ryzyka">7 ryzyk</a></li>
-          <li><a href="#poradnik">Darmowy poradnik</a></li>
-          <li><a href="#szkolenie">Szkolenie</a></li>
-          <li><a href="#o-autorce">O autorce</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="#kontakt">Kontakt</a></li>
-        </ul>
-      </div>
+<li><a href="#kontakt">Kontakt</a></li>
+</ul>
+</div>
+<div>
+<h3>Informacje</h3>
+<ul class="footer-links">
+<li><a href="#">Polityka prywatności</a></li>
+<li><a href="#">Regulamin</a></li>
+<li><a href="#">Polityka cookies</a></li>
 
-      <div>
-        <h3>Informacje</h3>
-
-        <ul class="footer-links">
-          <li><a href="#">Polityka prywatności</a></li>
-          <li><a href="#">Regulamin</a></li>
-          <li><a href="#">Polityka cookies</a></li>
-          <li>
-            <a href="mailto:biuro@lex-legal.pl">
-              biuro@lex-legal.pl
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <span>© 2026 Akademia TSL. Wszelkie prawa zastrzeżone.</span>
-      <span>Materiały mają charakter edukacyjny i informacyjny.</span>
-    </div>
-  </div>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<span>© 2026 Akademia TSL. Wszelkie prawa zastrzeżone.</span>
+<span>Materiały mają charakter edukacyjny i informacyjny.</span>
+</div>
+</div>
 </footer>
-
 <a class="mobile-sticky-cta" href="#poradnik">
   Pobierz darmowy poradnik
 </a>
-
 <script>
   const toggle = document.querySelector(".mobile-toggle");
   const menu = document.querySelector(".menu");
@@ -2503,11 +2010,5 @@ html = r'''<!DOCTYPE html>
     revealElements.forEach((element) => element.classList.add("visible"));
   }
 </script>
-
 </body>
 </html>
-'''
-
-path = Path("/mnt/data/akademia-tsl-index-nowa-wersja.html")
-path.write_text(html, encoding="utf-8")
-print(f"Gotowe: {path}")
