@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Akademia TSL – praktyczna wiedza dla przewoźników</title>
+  <meta name="description" content="Praktyczne szkolenia, checklisty i wzory dokumentów dla przewoźników i przedsiębiorców z branży TSL.">
+
+  <style>
+    :root {
+      --navy: #092746;
+      --orange: #ef7622;
+      --light: #f5f7f9;
+      --white: #ffffff;
+      --text: #172331;
+      --muted: #607080;
+      --border: #dfe5eb;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      background: var(--white);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: var(--navy);
+    }
+
+    .logo span {
+      color: var(--orange);
+    }
+
+    .menu {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .menu a:hover {
+      color: var(--orange);
+    }
+
+    .hero {
+      padding: 100px 0;
+      background:
+        radial-gradient(circle at 85% 20%, rgba(239,118,34,.18), transparent 25%),
+        linear-gradient(135deg, #f6f2ec, #ffffff);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      color: var(--orange);
+      font-size: .82rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 {
+      color: var(--navy);
+      line-height: 1.15;
+    }
+
+    h1 {
+      font-size: clamp(2.7rem, 6vw, 5.3rem);
+      letter-spacing: -.045em;
+    }
+
+    h1 span {
+      color: var(--orange);
+    }
+
+    h2 {
+      margin-bottom: 18px;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+    }
+
+    h3 {
+      margin-bottom: 12px;
+    }
+
+    p {
+      color: var(--muted);
+    }
+
+    .lead {
+      max-width: 720px;
+      margin-top: 24px;
+      font-size: 1.18rem;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 52px;
+      padding: 14px 24px;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid transparent;
+      border-radius: 999px;
+      font-weight: 900;
+    }
+
+    .button-primary {
+      color: white;
+      background: var(--orange);
+    }
+
+    .button-secondary {
+      color: var(--navy);
+      border-color: var(--navy);
+      background: white;
+    }
+
+    .hero-card {
+      padding: 34px;
+      border-radius: 24px;
+      background: white;
+      box-shadow: 0 20px 50px rgba(9,39,70,.14);
+    }
+
+    .hero-card ul,
+    .checklist {
+      display: grid;
+      gap: 12px;
+      margin-top: 24px;
+      list-style: none;
+    }
+
+    .hero-card li {
+      padding: 13px;
+      border-radius: 10px;
+      color: var(--navy);
+      background: var(--light);
+      font-weight: 800;
+    }
+
+    .section {
+      padding: 85px 0;
+    }
+
+    .section-light {
+      background: var(--light);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .card {
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: white;
+    }
+
+    .number {
+      width: 44px;
+      height: 44px;
+      margin-bottom: 20px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      color: white;
+      background: var(--navy);
+      font-weight: 900;
+    }
+
+    .offer {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      overflow: hidden;
+      border-radius: 26px;
+      background: var(--navy);
+      box-shadow: 0 20px 50px rgba(9,39,70,.14);
+    }
+
+    .offer-cover {
+      min-height: 410px;
+      padding: 45px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: white;
+    }
+
+    .offer-cover strong {
+      color: var(--orange);
+      font-size: 6rem;
+      line-height: 1;
+    }
+
+    .offer-cover h2 {
+      color: white;
+      font-size: 2.1rem;
+    }
+
+    .offer-content {
+      padding: 50px;
+      background: white;
+    }
+
+    .checklist li::before {
+      content: "✓";
+      margin-right: 10px;
+      color: #19875c;
+      font-weight: 900;
+    }
+
+    .training {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .price-card {
+      padding: 38px;
+      border-radius: 22px;
+      color: white;
+      background: var(--navy);
+    }
+
+    .price-card h3,
+    .price-card p {
+      color: white;
+    }
+
+    .price {
+      margin: 22px 0;
+      color: var(--orange);
+      font-size: 3rem;
+      font-weight: 900;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .photo {
+      min-height: 380px;
+      padding: 30px;
+      display: flex;
+      align-items: flex-end;
+      border-radius: 24px;
+      color: white;
+      background: linear-gradient(135deg, #9aabba, var(--navy));
+    }
+
+    .contact {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 50px;
+    }
+
+    form {
+      display: grid;
+      gap: 16px;
+      padding: 32px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: white;
+      box-shadow: 0 15px 40px rgba(9,39,70,.1);
+    }
+
+    label {
+      color: var(--navy);
+      font-weight: 800;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      margin-top: 7px;
+      padding: 14px;
+      border: 1px solid #cdd6df;
+      border-radius: 10px;
+      font: inherit;
+    }
+
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    button {
+      border: 0;
+      cursor: pointer;
+    }
+
+    footer {
+      padding: 45px 0;
+      color: rgba(255,255,255,.75);
+      background: #061b31;
+    }
+
+    footer strong {
+      color: white;
+    }
+
+    @media (max-width: 850px) {
+      .menu {
+        display: none;
+      }
+
+      .hero-grid,
+      .offer,
+      .training,
+      .about,
+      .contact {
+        grid-template-columns: 1fr;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .hero,
+      .section {
+        padding: 65px 0;
+      }
+
+      .buttons {
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .offer-cover,
+      .offer-content,
+      form {
+        padding: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <a class="logo" href="#start">Akademia <span>TSL</span></a>
+
+      <ul class="menu">
+        <li><a href="#problemy">Dla przewoźników</a></li>
+        <li><a href="#pdf">Darmowy PDF</a></li>
+        <li><a href="#szkolenie">Szkolenie</a></li>
+        <li><a href="#o-akademii">O Akademii</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero" id="start">
+    <div class="container hero-grid">
+
+      <div>
+        <span class="eyebrow">Prawo transportowe w praktyce</span>
+
+        <h1>
+          Zlecenie transportowe
+          <span>bez pułapek</span>
+        </h1>
+
+        <p class="lead">
+          Praktyczne szkolenia, checklisty i wzory dokumentów, które
+          pomagają przewoźnikom chronić fracht i unikać kosztownych błędów.
+        </p>
+
+        <div class="buttons">
+          <a class="button button-primary" href="#pdf">
+            Pobierz darmowy poradnik
+          </a>
+
+          <a class="button button-secondary" href="#szkolenie">
+            Poznaj szkolenie
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <span class="eyebrow">Sprawdź przed akceptacją</span>
+
+        <h3>Ryzykowny zapis może oznaczać realną stratę pieniędzy</h3>
+
+        <ul>
+          <li>Kara umowna</li>
+          <li>Potrącenie frachtu</li>
+          <li>Wydłużenie płatności</li>
+          <li>Odpowiedzialność za dokumenty</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" id="problemy">
+    <div class="container">
+
+      <span class="eyebrow">Najczęstsze problemy</span>
+
+      <h2>Ryzyko często kryje się w szczegółach zlecenia</h2>
+
+      <p class="lead">
+        Akademia TSL przekłada skomplikowane zapisy prawne na konkretne
+        decyzje biznesowe przewoźnika.
+      </p>
+
+      <div class="cards">
+
+        <article class="card">
+          <div class="number">01</div>
+          <h3>Kary umowne</h3>
+          <p>
+            Sankcje za opóźnienie, brak dokumentów, neutralizację
+            albo kontakt z kontrahentem.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="number">02</div>
+          <h3>Potrącenie frachtu</h3>
+          <p>
+            Postanowienia pozwalające spedycji pomniejszyć należność
+            przewoźnika.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="number">03</div>
+          <h3>Termin płatności</h3>
+          <p>
+            Dodatkowe warunki, przez które termin płatności zaczyna
+            biec znacznie później.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-light" id="pdf">
+    <div class="container">
+
+      <div class="offer">
+
+        <div class="offer-cover">
+          <strong>7</strong>
+
+          <div>
+            <p style="color:rgba(255,255,255,.7)">DARMOWY PORADNIK</p>
+
+            <h2>
+              7 zapisów w zleceniu transportowym,
+              przez które możesz stracić fracht
+            </h2>
+          </div>
+        </div>
+
+        <div class="offer-content">
+          <span class="eyebrow">Materiał bezpłatny</span>
+
+          <h2>Zobacz, co sprawdzić przed kliknięciem „akceptuję”</h2>
+
+          <ul class="checklist">
+            <li>poznasz przykłady ryzykownych postanowień,</li>
+            <li>sprawdzisz dodatkowe warunki płatności,</li>
+            <li>rozpoznasz zapisy umożliwiające potrącenie,</li>
+            <li>otrzymasz prostą listę kontrolną.</li>
+          </ul>
+
+          <div class="buttons">
+            <a class="button button-primary" href="#kontakt">
+              Chcę otrzymać poradnik
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="szkolenie">
+    <div class="container training">
+
+      <div>
+        <span class="eyebrow">Szkolenie i pakiet dokumentów</span>
+
+        <h2>Zlecenie transportowe bez pułapek</h2>
+
+        <p class="lead">
+          Jak uniknąć kar, potrąceń i utraty części wynagrodzenia
+          za wykonany przewóz.
+        </p>
+
+        <ul class="checklist">
+          <li>praktyczne szkolenie podzielone na moduły,</li>
+          <li>checklista czerwonych flag,</li>
+          <li>lista 30 ryzykownych klauzul,</li>
+          <li>wzory odpowiedzi i zastrzeżeń,</li>
+          <li>procedura sprawdzenia zlecenia.</li>
+        </ul>
+      </div>
+
+      <aside class="price-card">
+        <span class="eyebrow">Planowana premiera</span>
+
+        <h3>Pakiet ochrony pieniędzy przewoźnika</h3>
+
+        <div class="price">297 zł</div>
+
+        <p>
+          Zapisz się na listę zainteresowanych i otrzymaj informację
+          o uruchomieniu sprzedaży.
+        </p>
+
+        <div class="buttons">
+          <a class="button button-primary" href="#kontakt">
+            Zapisz mnie na listę
+          </a>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+  <section class="section section-light" id="o-akademii">
+    <div class="container about">
+
+      <div class="photo">
+        <strong>Miejsce na zdjęcie autorki</strong>
+      </div>
+
+      <div>
+        <span class="eyebrow">O Akademii TSL</span>
+
+        <h2>Prawo wyjaśnione językiem codziennych decyzji transportowych</h2>
+
+        <p class="lead">
+          Akademia TSL powstaje dla przewoźników i przedsiębiorców,
+          którzy potrzebują jasnych procedur, praktycznych dokumentów
+          i wiedzy możliwej do zastosowania od razu.
+        </p>
+
+        <p style="margin-top:18px">
+          Materiały przygotowuje adwokat zajmująca się obsługą prawną
+          przedsiębiorców z branży transportowej, spedycyjnej i logistycznej.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" id="kontakt">
+    <div class="container contact">
+
+      <div>
+        <span class="eyebrow">Kontakt</span>
+
+        <h2>Masz pytanie dotyczące Akademii TSL?</h2>
+
+        <p class="lead">
+          Napisz wiadomość. Odpowiemy na wskazany adres e-mail.
+        </p>
+
+        <p style="margin-top:24px">
+          <strong>biuro@lex-legal.pl</strong>
+        </p>
+      </div>
+
+      <form
+        name="kontakt-akademia-tsl"
+        method="POST"
+        data-netlify="true"
+      >
+        <input
+          type="hidden"
+          name="form-name"
+          value="kontakt-akademia-tsl"
+        >
+
+        <label>
+          Imię i nazwisko
+          <input type="text" name="imie" required>
+        </label>
+
+        <label>
+          Adres e-mail
+          <input type="email" name="email" required>
+        </label>
+
+        <label>
+          Wiadomość
+          <textarea name="wiadomosc" required></textarea>
+        </label>
+
+        <button class="button button-primary" type="submit">
+          Wyślij wiadomość
+        </button>
+      </form>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <strong>Akademia TSL</strong>
+
+    <p style="margin-top:10px;color:rgba(255,255,255,.7)">
+      Praktyczna wiedza prawna dla branży transportowej.
+    </p>
+
+    <p style="margin-top:25px;color:rgba(255,255,255,.55)">
+      © 2026 Akademia TSL. Wszelkie prawa zastrzeżone.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
