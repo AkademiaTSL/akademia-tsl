@@ -865,6 +865,21 @@
       box-shadow: var(--shadow);
     }
 
+
+    .author-image-wrap.image-missing::before {
+      content: "Dodaj plik zdjęcia do repozytorium pod nazwą 10.06.2026.png";
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      padding: 30px;
+      color: var(--navy);
+      background: var(--light);
+      font-weight: 800;
+      text-align: center;
+    }
+
     .author-image-wrap::after {
       content: "";
       position: absolute;
@@ -1896,10 +1911,23 @@
       <div class="author-image-wrap reveal">
         <img
           class="author-image"
-          src="10.06.2026.jpg"
-          data-fallbacks="10.06.2026.jpeg,10.06.2026.png,10.06.2026.webp"
+          src="10.06.2026.png"
           alt="Adwokat Jolanta Czesielska-Biel – Akademia TSL"
           loading="lazy"
+          data-fallback-index="0"
+          data-fallbacks='["10.06.2026.jpg","10.06.2026.jpeg","10.06.2026.webp","10.06.2026.PNG","10.06.2026.JPG","10.06.2026.JPEG","10.06.2026.WEBP"]'
+          onerror="
+            const sources = JSON.parse(this.dataset.fallbacks || '[]');
+            const index = Number(this.dataset.fallbackIndex || 0);
+            if (index < sources.length) {
+              this.dataset.fallbackIndex = String(index + 1);
+              this.src = sources[index];
+            } else {
+              this.onerror = null;
+              this.style.display = 'none';
+              this.parentElement.classList.add('image-missing');
+            }
+          "
         >
       </div>
 
@@ -2141,23 +2169,6 @@
       });
     });
   }
-
-
-  const fallbackImages = document.querySelectorAll("img[data-fallbacks]");
-
-  fallbackImages.forEach((image) => {
-    const fallbacks = image.dataset.fallbacks
-      .split(",")
-      .map((item) => item.trim())
-      .filter(Boolean);
-
-    image.addEventListener("error", () => {
-      const nextSource = fallbacks.shift();
-
-      if (nextSource) {
-        image.src = nextSource;
-      }
-    });
   });
 
   const revealElements = document.querySelectorAll(".reveal");
