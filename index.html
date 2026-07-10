@@ -842,6 +842,104 @@
       font-size: 0.87rem;
     }
 
+
+    /* O AUTORCE */
+
+    .author-section {
+      background: var(--white);
+    }
+
+    .author-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .author-image-wrap {
+      position: relative;
+      min-height: 590px;
+      overflow: hidden;
+      border-radius: 28px;
+      background: var(--light);
+      box-shadow: var(--shadow);
+    }
+
+    .author-image-wrap::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(
+          to top,
+          rgba(6, 27, 49, 0.34),
+          transparent 42%
+        );
+    }
+
+    .author-image {
+      width: 100%;
+      height: 100%;
+      min-height: 590px;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .author-content h2 {
+      max-width: 720px;
+    }
+
+    .author-intro {
+      margin-top: 22px;
+      font-size: 1.08rem;
+    }
+
+    .author-checks {
+      display: grid;
+      gap: 13px;
+      margin: 28px 0 30px;
+      list-style: none;
+    }
+
+    .author-checks li {
+      position: relative;
+      padding-left: 34px;
+      color: var(--navy);
+      font-weight: 800;
+    }
+
+    .author-checks li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--green);
+      font-size: 1.05rem;
+      font-weight: 900;
+    }
+
+    .author-signature {
+      margin-top: 30px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    .author-signature strong {
+      display: block;
+      color: var(--navy);
+      font-size: 1.18rem;
+    }
+
+    .author-signature span {
+      display: block;
+      margin-top: 5px;
+      color: var(--orange);
+      font-size: 0.9rem;
+      font-weight: 900;
+      letter-spacing: 0.03em;
+    }
+
     /* KONSEKWENCJE */
 
     .consequence-grid {
@@ -1293,6 +1391,12 @@
         grid-template-columns: 1fr;
       }
 
+
+      .author-image-wrap,
+      .author-image {
+        min-height: 500px;
+      }
+
       .price-card {
         position: static;
       }
@@ -1368,6 +1472,12 @@
         align-items: stretch;
       }
 
+
+      .author-image-wrap,
+      .author-image {
+        min-height: 420px;
+      }
+
       .ebook-cover-area {
         min-height: 470px;
         padding: 24px 14px;
@@ -1425,7 +1535,7 @@
 
 <li><a href="#poradnik">Darmowy poradnik</a></li>
 <li><a href="#szkolenie">Szkolenie</a></li>
-<li><a href="o-autorce.html">O autorce</a></li>
+<li><a href="#o-autorce">O autorce</a></li>
 
 <li><a href="#kontakt">Kontakt</a></li>
 </ul>
@@ -1777,6 +1887,59 @@
 </div>
 </section>
 <!-- 5. KONSEKWENCJE -->
+
+  <!-- O AUTORCE -->
+
+  <section class="section author-section" id="o-autorce">
+    <div class="container author-grid">
+
+      <div class="author-image-wrap reveal">
+        <img
+          class="author-image"
+          src="10.06.2026.jpg"
+          data-fallbacks="10.06.2026.jpeg,10.06.2026.png,10.06.2026.webp"
+          alt="Adwokat Jolanta Czesielska-Biel – Akademia TSL"
+          loading="lazy"
+        >
+      </div>
+
+      <div class="author-content reveal">
+        <span class="eyebrow">
+          O autorce
+        </span>
+
+        <h2>
+          Praktyczna wiedza prawna dla branży transportowej
+        </h2>
+
+        <ul class="author-checks">
+          <li>Adwokat specjalizująca się w branży TSL</li>
+          <li>Szkolenia dla przewoźników i spedytorów</li>
+          <li>Praktyczna wiedza oparta na rzeczywistych sprawach</li>
+          <li>Wsparcie przedsiębiorców z całej Polski</li>
+        </ul>
+
+        <p class="author-intro">
+          Nazywam się Jolanta Czesielska-Biel. Od lat pomagam
+          przedsiębiorcom analizować zlecenia transportowe, unikać
+          kosztownych błędów oraz skutecznie dochodzić należnego frachtu.
+        </p>
+
+        <p style="margin-top: 18px;">
+          Ten poradnik powstał na podstawie rzeczywistych spraw i problemów,
+          z którymi na co dzień zgłaszają się do mnie przewoźnicy
+          i spedytorzy.
+        </p>
+
+        <div class="author-signature">
+          <strong>Jolanta Czesielska-Biel</strong>
+          <span>Adwokat • Prawo transportowe • Akademia TSL</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
 <section class="section section-navy">
 <div class="container">
 <div class="section-intro center reveal">
@@ -1931,7 +2094,7 @@
 
 <li><a href="#poradnik">Darmowy poradnik</a></li>
 <li><a href="#szkolenie">Szkolenie</a></li>
-<li><a href="o-autorce.html">O autorce</a></li>
+<li><a href="#o-autorce">O autorce</a></li>
 
 <li><a href="#kontakt">Kontakt</a></li>
 </ul>
@@ -1978,6 +2141,24 @@
       });
     });
   }
+
+
+  const fallbackImages = document.querySelectorAll("img[data-fallbacks]");
+
+  fallbackImages.forEach((image) => {
+    const fallbacks = image.dataset.fallbacks
+      .split(",")
+      .map((item) => item.trim())
+      .filter(Boolean);
+
+    image.addEventListener("error", () => {
+      const nextSource = fallbacks.shift();
+
+      if (nextSource) {
+        image.src = nextSource;
+      }
+    });
+  });
 
   const revealElements = document.querySelectorAll(".reveal");
 
