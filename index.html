@@ -5,7 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Akademia TSL – praktyczna wiedza dla przewoźników</title>
-  <meta name="description" content="Praktyczne szkolenia, checklisty i wzory dokumentów dla przewoźników i przedsiębiorców z branży TSL.">
+
+  <meta
+    name="description"
+    content="Praktyczne szkolenia, checklisty i wzory dokumentów dla przewoźników i przedsiębiorców z branży TSL."
+  >
 
   <style>
     :root {
@@ -61,18 +65,25 @@
       gap: 30px;
     }
 
+    /* Logo w miejscu wcześniejszego napisu Akademia TSL */
     .logo {
-      font-size: 1.25rem;
-      font-weight: 900;
-      color: var(--navy);
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      line-height: 0;
     }
 
-    .logo span {
-      color: var(--orange);
+    .logo-image {
+      display: block;
+      width: auto;
+      height: 48px;
+      max-width: 180px;
+      object-fit: contain;
     }
 
     .menu {
       display: flex;
+      align-items: center;
       gap: 24px;
       list-style: none;
       font-weight: 700;
@@ -86,13 +97,17 @@
     .hero {
       padding: 100px 0;
       background:
-        radial-gradient(circle at 85% 20%, rgba(239,118,34,.18), transparent 25%),
+        radial-gradient(
+          circle at 85% 20%,
+          rgba(239, 118, 34, 0.18),
+          transparent 25%
+        ),
         linear-gradient(135deg, #f6f2ec, #ffffff);
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.2fr .8fr;
+      grid-template-columns: 1.2fr 0.8fr;
       gap: 60px;
       align-items: center;
     }
@@ -101,20 +116,22 @@
       display: inline-block;
       margin-bottom: 14px;
       color: var(--orange);
-      font-size: .82rem;
+      font-size: 0.82rem;
       font-weight: 900;
-      letter-spacing: .12em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
     }
 
-    h1, h2, h3 {
+    h1,
+    h2,
+    h3 {
       color: var(--navy);
       line-height: 1.15;
     }
 
     h1 {
       font-size: clamp(2.7rem, 6vw, 5.3rem);
-      letter-spacing: -.045em;
+      letter-spacing: -0.045em;
     }
 
     h1 span {
@@ -163,17 +180,26 @@
       background: var(--orange);
     }
 
+    .button-primary:hover {
+      background: #d96518;
+    }
+
     .button-secondary {
       color: var(--navy);
       border-color: var(--navy);
       background: white;
     }
 
+    .button-secondary:hover {
+      color: white;
+      background: var(--navy);
+    }
+
     .hero-card {
       padding: 34px;
       border-radius: 24px;
       background: white;
-      box-shadow: 0 20px 50px rgba(9,39,70,.14);
+      box-shadow: 0 20px 50px rgba(9, 39, 70, 0.14);
     }
 
     .hero-card ul,
@@ -228,11 +254,11 @@
 
     .offer {
       display: grid;
-      grid-template-columns: .9fr 1.1fr;
+      grid-template-columns: 0.9fr 1.1fr;
       overflow: hidden;
       border-radius: 26px;
       background: var(--navy);
-      box-shadow: 0 20px 50px rgba(9,39,70,.14);
+      box-shadow: 0 20px 50px rgba(9, 39, 70, 0.14);
     }
 
     .offer-cover {
@@ -269,7 +295,7 @@
 
     .training {
       display: grid;
-      grid-template-columns: 1.1fr .9fr;
+      grid-template-columns: 1.1fr 0.9fr;
       gap: 55px;
       align-items: center;
     }
@@ -295,7 +321,7 @@
 
     .about {
       display: grid;
-      grid-template-columns: .8fr 1.2fr;
+      grid-template-columns: 0.8fr 1.2fr;
       gap: 55px;
       align-items: center;
     }
@@ -312,7 +338,7 @@
 
     .contact {
       display: grid;
-      grid-template-columns: .8fr 1.2fr;
+      grid-template-columns: 0.8fr 1.2fr;
       gap: 50px;
     }
 
@@ -323,7 +349,7 @@
       border: 1px solid var(--border);
       border-radius: 20px;
       background: white;
-      box-shadow: 0 15px 40px rgba(9,39,70,.1);
+      box-shadow: 0 15px 40px rgba(9, 39, 70, 0.1);
     }
 
     label {
@@ -341,6 +367,12 @@
       font: inherit;
     }
 
+    input:focus,
+    textarea:focus {
+      outline: 3px solid rgba(239, 118, 34, 0.2);
+      border-color: var(--orange);
+    }
+
     textarea {
       min-height: 130px;
       resize: vertical;
@@ -353,7 +385,7 @@
 
     footer {
       padding: 45px 0;
-      color: rgba(255,255,255,.75);
+      color: rgba(255, 255, 255, 0.75);
       background: #061b31;
     }
 
@@ -380,6 +412,15 @@
     }
 
     @media (max-width: 550px) {
+      nav {
+        min-height: 68px;
+      }
+
+      .logo-image {
+        height: 40px;
+        max-width: 150px;
+      }
+
       .hero,
       .section {
         padding: 65px 0;
@@ -407,13 +448,19 @@
 <header>
   <div class="container">
     <nav>
-      <a class="logo" href="#start" aria-label="Akademia TSL — strona główna">
-  <img
-    src="logo-akademia-tsl.jpg.png"
-    alt="Akademia TSL"
-    class="logo-image"
-  >
-</a>
+
+      <!-- Logo zastępujące wcześniejszy napis Akademia TSL -->
+      <a
+        class="logo"
+        href="#start"
+        aria-label="Akademia TSL – strona główna"
+      >
+        <img
+          class="logo-image"
+          src="logo-akademia-tsl.jpg.png"
+          alt="Akademia TSL"
+        >
+      </a>
 
       <ul class="menu">
         <li><a href="#problemy">Dla przewoźników</a></li>
@@ -422,6 +469,7 @@
         <li><a href="#o-akademii">O Akademii</a></li>
         <li><a href="#kontakt">Kontakt</a></li>
       </ul>
+
     </nav>
   </div>
 </header>
@@ -458,7 +506,9 @@
       <div class="hero-card">
         <span class="eyebrow">Sprawdź przed akceptacją</span>
 
-        <h3>Ryzykowny zapis może oznaczać realną stratę pieniędzy</h3>
+        <h3>
+          Ryzykowny zapis może oznaczać realną stratę pieniędzy
+        </h3>
 
         <ul>
           <li>Kara umowna</li>
@@ -476,7 +526,9 @@
 
       <span class="eyebrow">Najczęstsze problemy</span>
 
-      <h2>Ryzyko często kryje się w szczegółach zlecenia</h2>
+      <h2>
+        Ryzyko często kryje się w szczegółach zlecenia
+      </h2>
 
       <p class="lead">
         Akademia TSL przekłada skomplikowane zapisy prawne na konkretne
@@ -487,7 +539,9 @@
 
         <article class="card">
           <div class="number">01</div>
+
           <h3>Kary umowne</h3>
+
           <p>
             Sankcje za opóźnienie, brak dokumentów, neutralizację
             albo kontakt z kontrahentem.
@@ -496,7 +550,9 @@
 
         <article class="card">
           <div class="number">02</div>
+
           <h3>Potrącenie frachtu</h3>
+
           <p>
             Postanowienia pozwalające spedycji pomniejszyć należność
             przewoźnika.
@@ -505,7 +561,9 @@
 
         <article class="card">
           <div class="number">03</div>
+
           <h3>Termin płatności</h3>
+
           <p>
             Dodatkowe warunki, przez które termin płatności zaczyna
             biec znacznie później.
@@ -525,7 +583,9 @@
           <strong>7</strong>
 
           <div>
-            <p style="color:rgba(255,255,255,.7)">DARMOWY PORADNIK</p>
+            <p style="color: rgba(255, 255, 255, 0.7);">
+              DARMOWY PORADNIK
+            </p>
 
             <h2>
               7 zapisów w zleceniu transportowym,
@@ -537,7 +597,9 @@
         <div class="offer-content">
           <span class="eyebrow">Materiał bezpłatny</span>
 
-          <h2>Zobacz, co sprawdzić przed kliknięciem „akceptuję”</h2>
+          <h2>
+            Zobacz, co sprawdzić przed kliknięciem „akceptuję”
+          </h2>
 
           <ul class="checklist">
             <li>poznasz przykłady ryzykownych postanowień,</li>
@@ -611,7 +673,9 @@
       <div>
         <span class="eyebrow">O Akademii TSL</span>
 
-        <h2>Prawo wyjaśnione językiem codziennych decyzji transportowych</h2>
+        <h2>
+          Prawo wyjaśnione językiem codziennych decyzji transportowych
+        </h2>
 
         <p class="lead">
           Akademia TSL powstaje dla przewoźników i przedsiębiorców,
@@ -619,7 +683,7 @@
           i wiedzy możliwej do zastosowania od razu.
         </p>
 
-        <p style="margin-top:18px">
+        <p style="margin-top: 18px;">
           Materiały przygotowuje adwokat zajmująca się obsługą prawną
           przedsiębiorców z branży transportowej, spedycyjnej i logistycznej.
         </p>
@@ -640,7 +704,7 @@
           Napisz wiadomość. Odpowiemy na wskazany adres e-mail.
         </p>
 
-        <p style="margin-top:24px">
+        <p style="margin-top: 24px;">
           <strong>biuro@lex-legal.pl</strong>
         </p>
       </div>
@@ -685,11 +749,11 @@
   <div class="container">
     <strong>Akademia TSL</strong>
 
-    <p style="margin-top:10px;color:rgba(255,255,255,.7)">
+    <p style="margin-top: 10px; color: rgba(255, 255, 255, 0.7);">
       Praktyczna wiedza prawna dla branży transportowej.
     </p>
 
-    <p style="margin-top:25px;color:rgba(255,255,255,.55)">
+    <p style="margin-top: 25px; color: rgba(255, 255, 255, 0.55);">
       © 2026 Akademia TSL. Wszelkie prawa zastrzeżone.
     </p>
   </div>
