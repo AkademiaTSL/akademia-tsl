@@ -1,25 +1,38 @@
-<!DOCTYPE html>
+from pathlib import Path
+
+html = r'''<!DOCTYPE html>
 <html lang="pl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Akademia TSL – praktyczna wiedza dla przewoźników</title>
+  <title>Akademia TSL – zlecenia transportowe bez pułapek</title>
 
   <meta
     name="description"
-    content="Praktyczne szkolenia, checklisty i wzory dokumentów dla przewoźników i przedsiębiorców z branży TSL."
+    content="Praktyczna wiedza prawna dla przewoźników. Pobierz bezpłatny poradnik i poznaj 7 zapisów w zleceniu transportowym, przez które przewoźnicy tracą pieniądze."
   >
+
+  <meta name="theme-color" content="#092746">
 
   <style>
     :root {
       --navy: #092746;
+      --navy-dark: #061b31;
+      --navy-soft: #123b62;
       --orange: #ef7622;
+      --orange-dark: #d96518;
+      --green: #19875c;
+      --red: #c53d3d;
       --light: #f5f7f9;
+      --cream: #fbf7f2;
       --white: #ffffff;
       --text: #172331;
       --muted: #607080;
       --border: #dfe5eb;
+      --shadow: 0 20px 55px rgba(9, 39, 70, 0.13);
+      --shadow-soft: 0 12px 32px rgba(9, 39, 70, 0.09);
+      --radius: 24px;
     }
 
     * {
@@ -30,13 +43,23 @@
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 92px;
     }
 
     body {
       font-family: Arial, Helvetica, sans-serif;
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.65;
       background: var(--white);
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
     }
 
     a {
@@ -44,28 +67,185 @@
       text-decoration: none;
     }
 
-    .container {
-      width: min(1120px, calc(100% - 40px));
-      margin: auto;
+    button,
+    input,
+    textarea {
+      font: inherit;
     }
+
+    button {
+      cursor: pointer;
+    }
+
+    .container {
+      width: min(1160px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 92px 0;
+    }
+
+    .section-light {
+      background: var(--light);
+    }
+
+    .section-cream {
+      background: var(--cream);
+    }
+
+    .section-navy {
+      color: var(--white);
+      background: var(--navy);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      color: var(--orange);
+      font-size: 0.8rem;
+      font-weight: 900;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: var(--navy);
+      line-height: 1.12;
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 6vw, 5.25rem);
+      letter-spacing: -0.052em;
+    }
+
+    h1 span {
+      color: var(--orange);
+    }
+
+    h2 {
+      max-width: 900px;
+      margin-bottom: 18px;
+      font-size: clamp(2rem, 4vw, 3.35rem);
+      letter-spacing: -0.035em;
+    }
+
+    h3 {
+      margin-bottom: 12px;
+      font-size: 1.25rem;
+    }
+
+    p {
+      color: var(--muted);
+    }
+
+    .lead {
+      max-width: 780px;
+      margin-top: 22px;
+      font-size: 1.16rem;
+    }
+
+    .section-intro {
+      max-width: 840px;
+      margin-bottom: 42px;
+    }
+
+    .section-intro.center {
+      margin-right: auto;
+      margin-left: auto;
+      text-align: center;
+    }
+
+    .section-intro.center h2,
+    .section-intro.center .lead {
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 54px;
+      padding: 14px 25px;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid transparent;
+      border-radius: 999px;
+      font-weight: 900;
+      transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      color: var(--white);
+      background: var(--orange);
+      box-shadow: 0 10px 24px rgba(239, 118, 34, 0.24);
+    }
+
+    .button-primary:hover {
+      background: var(--orange-dark);
+    }
+
+    .button-secondary {
+      color: var(--navy);
+      border-color: var(--navy);
+      background: var(--white);
+    }
+
+    .button-secondary:hover {
+      color: var(--white);
+      background: var(--navy);
+    }
+
+    .button-light {
+      color: var(--navy);
+      background: var(--white);
+    }
+
+    .button-light:hover {
+      color: var(--white);
+      background: var(--orange);
+    }
+
+    .button-full {
+      width: 100%;
+    }
+
+    /* HEADER */
 
     header {
       position: sticky;
       top: 0;
-      z-index: 10;
-      background: rgba(255, 255, 255, 0.96);
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.97);
       border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
     }
 
     nav {
-      min-height: 74px;
+      min-height: 80px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 30px;
+      gap: 28px;
     }
 
-    /* Logo w miejscu wcześniejszego napisu Akademia TSL */
     .logo {
       display: flex;
       align-items: center;
@@ -74,7 +254,6 @@
     }
 
     .logo-image {
-      display: block;
       width: auto;
       height: 48px;
       max-width: 180px;
@@ -84,272 +263,446 @@
     .menu {
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: 23px;
       list-style: none;
-      font-weight: 700;
       color: var(--navy);
+      font-size: 0.98rem;
+      font-weight: 800;
+    }
+
+    .menu a {
+      transition: color 0.2s ease;
     }
 
     .menu a:hover {
       color: var(--orange);
     }
 
+    .mobile-toggle {
+      width: 45px;
+      height: 45px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--navy);
+      background: var(--white);
+      font-size: 1.45rem;
+    }
+
+    /* HERO */
+
     .hero {
-      padding: 100px 0;
+      position: relative;
+      padding: 102px 0 42px;
+      overflow: hidden;
       background:
-        radial-gradient(
-          circle at 85% 20%,
-          rgba(239, 118, 34, 0.18),
-          transparent 25%
-        ),
-        linear-gradient(135deg, #f6f2ec, #ffffff);
+        radial-gradient(circle at 88% 12%, rgba(239, 118, 34, 0.23), transparent 25%),
+        linear-gradient(135deg, #f7f3ee, #ffffff);
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 60px;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 62px;
       align-items: center;
     }
 
-    .eyebrow {
-      display: inline-block;
-      margin-bottom: 14px;
-      color: var(--orange);
-      font-size: 0.82rem;
-      font-weight: 900;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+    .hero-copy {
+      position: relative;
+      z-index: 2;
     }
 
-    h1,
-    h2,
-    h3 {
-      color: var(--navy);
-      line-height: 1.15;
-    }
-
-    h1 {
-      font-size: clamp(2.7rem, 6vw, 5.3rem);
-      letter-spacing: -0.045em;
-    }
-
-    h1 span {
-      color: var(--orange);
-    }
-
-    h2 {
-      margin-bottom: 18px;
-      font-size: clamp(2rem, 4vw, 3.2rem);
-    }
-
-    h3 {
-      margin-bottom: 12px;
-    }
-
-    p {
-      color: var(--muted);
-    }
-
-    .lead {
-      max-width: 720px;
-      margin-top: 24px;
-      font-size: 1.18rem;
-    }
-
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 32px;
-    }
-
-    .button {
+    .hero-badge {
+      margin-top: 26px;
       display: inline-flex;
-      min-height: 52px;
-      padding: 14px 24px;
+      padding: 10px 14px;
       align-items: center;
-      justify-content: center;
-      border: 2px solid transparent;
+      gap: 9px;
+      border: 1px solid rgba(9, 39, 70, 0.12);
       border-radius: 999px;
-      font-weight: 900;
-    }
-
-    .button-primary {
-      color: white;
-      background: var(--orange);
-    }
-
-    .button-primary:hover {
-      background: #d96518;
-    }
-
-    .button-secondary {
       color: var(--navy);
-      border-color: var(--navy);
-      background: white;
-    }
-
-    .button-secondary:hover {
-      color: white;
-      background: var(--navy);
-    }
-
-    .hero-card {
-      padding: 34px;
-      border-radius: 24px;
-      background: white;
-      box-shadow: 0 20px 50px rgba(9, 39, 70, 0.14);
-    }
-
-    .hero-card ul,
-    .checklist {
-      display: grid;
-      gap: 12px;
-      margin-top: 24px;
-      list-style: none;
-    }
-
-    .hero-card li {
-      padding: 13px;
-      border-radius: 10px;
-      color: var(--navy);
-      background: var(--light);
+      background: rgba(255, 255, 255, 0.78);
+      font-size: 0.9rem;
       font-weight: 800;
     }
 
-    .section {
-      padding: 85px 0;
+    .hero-badge span {
+      color: var(--orange);
+      font-size: 1.1rem;
     }
 
-    .section-light {
-      background: var(--light);
+    .scan-card {
+      position: relative;
+      padding: 25px;
+      border-radius: 28px;
+      background: var(--white);
+      box-shadow: var(--shadow);
     }
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 40px;
+    .scan-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
     }
 
-    .card {
-      padding: 28px;
+    .scan-title {
+      color: var(--navy);
+      font-weight: 900;
+    }
+
+    .scan-status {
+      padding: 7px 10px;
+      border-radius: 999px;
+      color: var(--red);
+      background: #fff1f1;
+      font-size: 0.78rem;
+      font-weight: 900;
+    }
+
+    .paper {
+      position: relative;
+      padding: 27px 25px 25px 36px;
+      overflow: hidden;
       border: 1px solid var(--border);
       border-radius: 18px;
-      background: white;
+      background:
+        linear-gradient(90deg, transparent 0 22px, rgba(197, 61, 61, 0.15) 22px 23px, transparent 23px),
+        repeating-linear-gradient(#ffffff 0 31px, #edf1f4 32px);
+      min-height: 420px;
     }
 
-    .number {
-      width: 44px;
-      height: 44px;
-      margin-bottom: 20px;
+    .paper-line {
+      position: relative;
+      margin-bottom: 18px;
+      padding: 7px 10px;
+      border-radius: 8px;
+      color: #344455;
+      background: rgba(255, 255, 255, 0.78);
+      font-size: 0.87rem;
+    }
+
+    .paper-line.marked {
+      border: 1px solid rgba(197, 61, 61, 0.38);
+      background: #fff0f0;
+      box-shadow: inset 4px 0 0 var(--red);
+    }
+
+    .paper-line.warning {
+      border: 1px solid rgba(239, 118, 34, 0.42);
+      background: #fff7ef;
+      box-shadow: inset 4px 0 0 var(--orange);
+    }
+
+    .paper-line strong {
+      color: var(--navy);
+    }
+
+    .law-note {
+      margin-top: 4px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      color: var(--red);
+      font-size: 0.76rem;
+      font-weight: 800;
+    }
+
+    .law-note::before {
+      content: "↳";
+      font-size: 1rem;
+    }
+
+    .scan-footer {
+      margin-top: 18px;
+      padding: 16px;
+      border-radius: 14px;
+      color: var(--white);
+      background: var(--navy);
+    }
+
+    .scan-footer strong {
+      display: block;
+      font-size: 1rem;
+    }
+
+    .scan-footer span {
+      display: block;
+      margin-top: 4px;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.84rem;
+    }
+
+    .trust-strip {
+      margin-top: 55px;
+      padding: 23px 0;
+      border-top: 1px solid rgba(9, 39, 70, 0.1);
+      border-bottom: 1px solid rgba(9, 39, 70, 0.1);
+      background: rgba(255, 255, 255, 0.72);
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: var(--navy);
+      font-size: 0.92rem;
+      font-weight: 900;
+      text-align: center;
+    }
+
+    .trust-item span {
+      width: 31px;
+      height: 31px;
       display: grid;
       place-items: center;
-      border-radius: 12px;
-      color: white;
+      flex: 0 0 31px;
+      border-radius: 50%;
+      color: var(--white);
+      background: var(--orange);
+      font-size: 0.82rem;
+    }
+
+    /* RYZYKA */
+
+    .risk-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 42px;
+    }
+
+    .risk-card {
+      position: relative;
+      min-height: 250px;
+      padding: 27px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: var(--white);
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+    }
+
+    .risk-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(239, 118, 34, 0.45);
+      box-shadow: 0 18px 38px rgba(9, 39, 70, 0.1);
+    }
+
+    .risk-number {
+      width: 45px;
+      height: 45px;
+      margin-bottom: 22px;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      color: var(--white);
       background: var(--navy);
       font-weight: 900;
     }
 
-    .offer {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      overflow: hidden;
-      border-radius: 26px;
-      background: var(--navy);
-      box-shadow: 0 20px 50px rgba(9, 39, 70, 0.14);
+    .risk-card:nth-child(7) {
+      grid-column: 2 / span 2;
     }
 
-    .offer-cover {
-      min-height: 410px;
-      padding: 45px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      color: white;
+    .risk-card p {
+      font-size: 0.96rem;
     }
 
-    .offer-cover strong {
+    .risk-card::after {
+      content: "";
+      position: absolute;
+      right: -30px;
+      bottom: -30px;
+      width: 92px;
+      height: 92px;
+      border-radius: 50%;
+      background: rgba(239, 118, 34, 0.08);
+    }
+
+    .risk-hook {
+      margin-top: 15px;
       color: var(--orange);
-      font-size: 6rem;
-      line-height: 1;
+      font-size: 0.82rem;
+      font-weight: 900;
     }
 
-    .offer-cover h2 {
-      color: white;
-      font-size: 2.1rem;
+    .risk-cta {
+      margin-top: 36px;
+      padding: 27px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      border-radius: 20px;
+      background: var(--cream);
     }
 
-    .offer-content {
-      padding: 50px;
-      background: white;
+    .risk-cta p {
+      max-width: 735px;
+      color: var(--navy);
+      font-weight: 800;
+    }
+
+    /* EBOOK */
+
+    .ebook-panel {
+      display: grid;
+      grid-template-columns: 0.86fr 1.14fr;
+      overflow: hidden;
+      border-radius: 28px;
+      background: var(--navy);
+      box-shadow: var(--shadow);
+    }
+
+    .ebook-cover-area {
+      position: relative;
+      min-height: 640px;
+      padding: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(239, 118, 34, 0.26), transparent 30%),
+        var(--navy);
+    }
+
+    .ebook-mockup-wrap {
+      position: relative;
+      width: min(340px, 88%);
+      perspective: 900px;
+    }
+
+    .ebook-mockup {
+      position: relative;
+      padding: 34px 28px;
+      transform: rotateY(-8deg) rotateZ(-2deg);
+      border: 10px solid var(--white);
+      border-radius: 7px;
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.94)),
+        linear-gradient(135deg, #d9e0e7, #ffffff);
+      box-shadow: 24px 30px 0 rgba(6, 27, 49, 0.45), 0 28px 70px rgba(0, 0, 0, 0.32);
+    }
+
+    .ebook-mockup::before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      right: -18px;
+      bottom: -10px;
+      width: 18px;
+      border-radius: 0 5px 5px 0;
+      background: #d7dde3;
+      transform: skewY(35deg);
+      transform-origin: left;
+    }
+
+    .ebook-mini-logo {
+      margin-bottom: 42px;
+      color: var(--navy);
+      font-size: 0.8rem;
+      font-weight: 900;
+      letter-spacing: 0.09em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .ebook-mockup h3 {
+      font-size: 2rem;
+      line-height: 1.18;
+    }
+
+    .ebook-mockup h3 span {
+      color: var(--orange);
+    }
+
+    .ebook-mockup p {
+      margin-top: 26px;
+      padding-top: 20px;
+      border-top: 1px solid #aab6c1;
+      color: var(--text);
+      font-size: 0.9rem;
+    }
+
+    .ebook-icons {
+      margin-top: 34px;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .ebook-icons span {
+      width: 39px;
+      height: 39px;
+      display: grid;
+      place-items: center;
+      border: 2px solid var(--orange);
+      border-radius: 50%;
+      color: var(--navy);
+      font-size: 0.76rem;
+      font-weight: 900;
+    }
+
+    .ebook-content {
+      padding: 58px;
+      background: var(--white);
+    }
+
+    .checklist {
+      display: grid;
+      gap: 14px;
+      margin-top: 27px;
+      list-style: none;
+    }
+
+    .checklist li {
+      position: relative;
+      padding-left: 32px;
+      color: var(--text);
     }
 
     .checklist li::before {
       content: "✓";
-      margin-right: 10px;
-      color: #19875c;
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--green);
       font-weight: 900;
     }
 
-    .training {
+    .mini-form {
+      margin-top: 32px;
+      padding: 26px;
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 55px;
-      align-items: center;
-    }
-
-    .price-card {
-      padding: 38px;
-      border-radius: 22px;
-      color: white;
-      background: var(--navy);
-    }
-
-    .price-card h3,
-    .price-card p {
-      color: white;
-    }
-
-    .price {
-      margin: 22px 0;
-      color: var(--orange);
-      font-size: 3rem;
-      font-weight: 900;
-    }
-
-    .about {
-      display: grid;
-      grid-template-columns: 0.8fr 1.2fr;
-      gap: 55px;
-      align-items: center;
-    }
-
-    .photo {
-      min-height: 380px;
-      padding: 30px;
-      display: flex;
-      align-items: flex-end;
-      border-radius: 24px;
-      color: white;
-      background: linear-gradient(135deg, #9aabba, var(--navy));
-    }
-
-    .contact {
-      display: grid;
-      grid-template-columns: 0.8fr 1.2fr;
-      gap: 50px;
-    }
-
-    form {
-      display: grid;
-      gap: 16px;
-      padding: 32px;
+      gap: 15px;
       border: 1px solid var(--border);
       border-radius: 20px;
-      background: white;
-      box-shadow: 0 15px 40px rgba(9, 39, 70, 0.1);
+      background: var(--light);
+    }
+
+    .mini-form h3 {
+      margin-bottom: 0;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 13px;
     }
 
     label {
@@ -361,59 +714,624 @@
     textarea {
       width: 100%;
       margin-top: 7px;
-      padding: 14px;
+      padding: 14px 15px;
       border: 1px solid #cdd6df;
-      border-radius: 10px;
-      font: inherit;
+      border-radius: 11px;
+      color: var(--text);
+      background: var(--white);
     }
 
     input:focus,
     textarea:focus {
-      outline: 3px solid rgba(239, 118, 34, 0.2);
+      outline: 3px solid rgba(239, 118, 34, 0.18);
       border-color: var(--orange);
     }
 
-    textarea {
-      min-height: 130px;
-      resize: vertical;
+    .consent {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 400;
     }
 
-    button {
-      border: 0;
+    .consent input {
+      width: auto;
+      margin-top: 4px;
+    }
+
+    .form-note {
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    /* SZKOLENIE */
+
+    .training-grid {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .training-steps {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .training-step {
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--white);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .training-step span {
+      width: 42px;
+      height: 42px;
+      margin-bottom: 14px;
+      display: grid;
+      place-items: center;
+      border-radius: 11px;
+      color: var(--white);
+      background: var(--navy);
+      font-weight: 900;
+    }
+
+    .training-step strong {
+      color: var(--navy);
+    }
+
+    .training-step p {
+      margin-top: 7px;
+      font-size: 0.9rem;
+    }
+
+    .price-card {
+      position: sticky;
+      top: 110px;
+      padding: 40px;
+      border-radius: 24px;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 100% 0, rgba(239, 118, 34, 0.28), transparent 35%),
+        var(--navy);
+      box-shadow: var(--shadow);
+    }
+
+    .price-card h3,
+    .price-card p {
+      color: var(--white);
+    }
+
+    .price {
+      margin: 22px 0 8px;
+      color: var(--orange);
+      font-size: 3.25rem;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .price-caption {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.88rem;
+    }
+
+    .price-details {
+      display: grid;
+      gap: 12px;
+      margin-top: 26px;
+      list-style: none;
+    }
+
+    .price-details li {
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    .price-details li:last-child {
+      border-bottom: 0;
+    }
+
+    .coming-badge {
+      margin-top: 24px;
+      padding: 14px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 13px;
+      color: rgba(255, 255, 255, 0.82);
+      background: rgba(255, 255, 255, 0.07);
+      font-size: 0.87rem;
+    }
+
+    /* KONSEKWENCJE */
+
+    .consequence-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .consequence-card {
+      padding: 31px 24px;
+      border-radius: 20px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .consequence-icon {
+      width: 58px;
+      height: 58px;
+      margin: 0 auto 20px;
+      display: grid;
+      place-items: center;
+      border: 2px solid var(--orange);
+      border-radius: 50%;
+      color: var(--orange);
+      font-size: 1.18rem;
+      font-weight: 900;
+    }
+
+    .consequence-card h3 {
+      color: var(--white);
+    }
+
+    .consequence-card p {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* DLA KOGO */
+
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 40px;
+    }
+
+    .audience-card {
+      padding: 30px;
+      border: 1px solid var(--border);
+      border-radius: 21px;
+      background: var(--white);
+    }
+
+    .audience-label {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 20px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      color: var(--white);
+      background: var(--orange);
+      font-weight: 900;
+    }
+
+    /* O AUTORCE */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.82fr 1.18fr;
+      gap: 58px;
+      align-items: center;
+    }
+
+    .author-photo {
+      min-height: 470px;
+      padding: 34px;
+      display: flex;
+      align-items: flex-end;
+      border-radius: 26px;
+      color: var(--white);
+      background:
+        linear-gradient(to top, rgba(6, 27, 49, 0.84), rgba(9, 39, 70, 0.18)),
+        linear-gradient(135deg, #91a6b8, var(--navy));
+      box-shadow: var(--shadow);
+    }
+
+    .author-photo strong {
+      display: block;
+      font-size: 1.1rem;
+    }
+
+    .author-photo span {
+      display: block;
+      margin-top: 5px;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 0.9rem;
+    }
+
+    .author-points {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .author-point {
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      color: var(--navy);
+      background: var(--white);
+      font-weight: 800;
+    }
+
+    /* KORZYŚCI */
+
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .benefit-card {
+      padding: 28px;
+      border-radius: 20px;
+      background: var(--white);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .benefit-card span {
+      width: 46px;
+      height: 46px;
+      margin-bottom: 20px;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      color: var(--white);
+      background: var(--navy);
+      font-weight: 900;
+    }
+
+    /* CTA */
+
+    .mid-cta {
+      padding: 42px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 30px;
+      align-items: center;
+      border-radius: 26px;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 90% 0, rgba(239, 118, 34, 0.28), transparent 30%),
+        var(--navy);
+      box-shadow: var(--shadow);
+    }
+
+    .mid-cta h2 {
+      color: var(--white);
+      font-size: clamp(1.8rem, 3vw, 2.7rem);
+    }
+
+    .mid-cta p {
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    /* FAQ */
+
+    .faq-list {
+      max-width: 900px;
+      margin: 40px auto 0;
+      display: grid;
+      gap: 14px;
+    }
+
+    details {
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--white);
+    }
+
+    summary {
+      padding: 20px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      color: var(--navy);
+      font-weight: 900;
+      list-style: none;
       cursor: pointer;
     }
 
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "+";
+      color: var(--orange);
+      font-size: 1.5rem;
+    }
+
+    details[open] summary::after {
+      content: "–";
+    }
+
+    .faq-answer {
+      padding: 0 22px 22px;
+    }
+
+    /* KONTAKT */
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.82fr 1.18fr;
+      gap: 54px;
+      align-items: start;
+    }
+
+    .contact-data {
+      display: grid;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .contact-item {
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      background: var(--light);
+    }
+
+    .contact-item strong {
+      display: block;
+      color: var(--navy);
+    }
+
+    .contact-form {
+      padding: 34px;
+      display: grid;
+      gap: 17px;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: var(--white);
+      box-shadow: 0 15px 40px rgba(9, 39, 70, 0.1);
+    }
+
+    textarea {
+      min-height: 145px;
+      resize: vertical;
+    }
+
+    /* FOOTER */
+
     footer {
-      padding: 45px 0;
-      color: rgba(255, 255, 255, 0.75);
-      background: #061b31;
+      padding: 58px 0 34px;
+      color: rgba(255, 255, 255, 0.74);
+      background: var(--navy-dark);
     }
 
-    footer strong {
-      color: white;
+    .footer-cta {
+      margin-bottom: 46px;
+      padding: 28px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.06);
     }
 
-    @media (max-width: 850px) {
+    .footer-cta h3 {
+      color: var(--white);
+      font-size: 1.35rem;
+    }
+
+    .footer-cta p {
+      color: rgba(255, 255, 255, 0.68);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.8fr 0.8fr;
+      gap: 50px;
+    }
+
+    .footer-logo {
+      width: 180px;
+      padding: 7px;
+      border-radius: 8px;
+      background: var(--white);
+    }
+
+    footer h3 {
+      color: var(--white);
+      font-size: 1rem;
+    }
+
+    footer p,
+    footer a {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    footer a:hover {
+      color: var(--orange);
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 10px;
+      list-style: none;
+    }
+
+    .footer-bottom {
+      margin-top: 42px;
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 0.85rem;
+    }
+
+    /* MOBILE STICKY CTA */
+
+    .mobile-sticky-cta {
+      position: fixed;
+      right: 12px;
+      bottom: 12px;
+      left: 12px;
+      z-index: 150;
+      display: none;
+      min-height: 52px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      color: var(--white);
+      background: var(--orange);
+      box-shadow: 0 12px 30px rgba(6, 27, 49, 0.28);
+      font-weight: 900;
+    }
+
+    /* ANIMACJE */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        scroll-behavior: auto !important;
+        transition: none !important;
+        animation: none !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    /* RESPONSYWNOŚĆ */
+
+    @media (max-width: 1000px) {
+      .risk-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .risk-card:nth-child(7) {
+        grid-column: auto;
+      }
+
+      .consequence-grid,
+      .benefit-grid,
+      .trust-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .training-steps {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .mobile-toggle {
+        display: inline-flex;
+      }
+
       .menu {
+        position: fixed;
+        top: 80px;
+        right: 0;
+        left: 0;
+        padding: 25px 20px 32px;
         display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        border-bottom: 1px solid var(--border);
+        background: var(--white);
+        box-shadow: 0 20px 40px rgba(9, 39, 70, 0.12);
+      }
+
+      .menu.open {
+        display: flex;
+      }
+
+      .menu li {
+        border-bottom: 1px solid var(--border);
+      }
+
+      .menu li:last-child {
+        border-bottom: 0;
+      }
+
+      .menu a {
+        display: block;
+        padding: 14px 4px;
       }
 
       .hero-grid,
-      .offer,
-      .training,
-      .about,
-      .contact {
+      .ebook-panel,
+      .training-grid,
+      .about-grid,
+      .contact-grid {
         grid-template-columns: 1fr;
       }
 
-      .cards {
+      .hero {
+        padding-top: 78px;
+      }
+
+      .scan-card {
+        max-width: 610px;
+      }
+
+      .ebook-cover-area {
+        min-height: 560px;
+      }
+
+      .audience-grid {
         grid-template-columns: 1fr;
+      }
+
+      .price-card {
+        position: static;
+      }
+
+      .mid-cta {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-grid > div:first-child {
+        grid-column: 1 / -1;
       }
     }
 
-    @media (max-width: 550px) {
+    @media (max-width: 620px) {
+      body {
+        padding-bottom: 74px;
+      }
+
+      .container {
+        width: min(100% - 28px, 1160px);
+      }
+
       nav {
-        min-height: 68px;
+        min-height: 70px;
       }
 
       .logo-image {
@@ -421,12 +1339,23 @@
         max-width: 150px;
       }
 
-      .hero,
-      .section {
-        padding: 65px 0;
+      .menu {
+        top: 70px;
       }
 
-      .buttons {
+      .section {
+        padding: 68px 0;
+      }
+
+      .hero {
+        padding: 68px 0 24px;
+      }
+
+      h1 {
+        font-size: 3.03rem;
+      }
+
+      .button-row {
         flex-direction: column;
       }
 
@@ -434,10 +1363,57 @@
         width: 100%;
       }
 
-      .offer-cover,
-      .offer-content,
-      form {
+      .risk-grid,
+      .consequence-grid,
+      .benefit-grid,
+      .author-points,
+      .form-grid,
+      .footer-grid,
+      .trust-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .risk-cta,
+      .footer-cta {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .ebook-cover-area {
+        min-height: 480px;
+        padding: 34px 20px;
+      }
+
+      .ebook-content,
+      .price-card,
+      .contact-form,
+      .mid-cta {
         padding: 28px;
+      }
+
+      .ebook-mockup-wrap {
+        width: min(300px, 88%);
+      }
+
+      .scan-card {
+        padding: 20px;
+      }
+
+      .paper {
+        min-height: 390px;
+        padding: 23px 18px 20px 29px;
+      }
+
+      .footer-grid > div:first-child {
+        grid-column: auto;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+      }
+
+      .mobile-sticky-cta {
+        display: flex;
       }
     }
   </style>
@@ -448,13 +1424,7 @@
 <header>
   <div class="container">
     <nav>
-
-      <!-- Logo zastępujące wcześniejszy napis Akademia TSL -->
-      <a
-        class="logo"
-        href="#start"
-        aria-label="Akademia TSL – strona główna"
-      >
+      <a class="logo" href="#start" aria-label="Akademia TSL – strona główna">
         <img
           class="logo-image"
           src="logo-akademia-tsl.jpg.png"
@@ -462,272 +1432,936 @@
         >
       </a>
 
+      <button
+        class="mobile-toggle"
+        type="button"
+        aria-label="Otwórz menu"
+        aria-expanded="false"
+      >
+        ☰
+      </button>
+
       <ul class="menu">
-        <li><a href="#problemy">Dla przewoźników</a></li>
-        <li><a href="#pdf">Darmowy PDF</a></li>
+        <li><a href="#ryzyka">7 ryzyk</a></li>
+        <li><a href="#poradnik">Darmowy poradnik</a></li>
         <li><a href="#szkolenie">Szkolenie</a></li>
-        <li><a href="#o-akademii">O Akademii</a></li>
+        <li><a href="#o-autorce">O autorce</a></li>
+        <li><a href="#faq">FAQ</a></li>
         <li><a href="#kontakt">Kontakt</a></li>
       </ul>
-
     </nav>
   </div>
 </header>
 
 <main>
 
+  <!-- 1. HERO -->
+
   <section class="hero" id="start">
     <div class="container hero-grid">
-
-      <div>
+      <div class="hero-copy reveal">
         <span class="eyebrow">Prawo transportowe w praktyce</span>
 
         <h1>
-          Zlecenie transportowe
-          <span>bez pułapek</span>
+          Sprawdź zlecenie,
+          <span>zanim je zaakceptujesz</span>
         </h1>
 
         <p class="lead">
-          Praktyczne szkolenia, checklisty i wzory dokumentów, które
-          pomagają przewoźnikom chronić fracht i unikać kosztownych błędów.
+          Naucz się rozpoznawać zapisy, które mogą prowadzić do kary,
+          potrącenia frachtu, późniejszej płatności albo kosztownego sporu.
+          Zanim kierowca ruszy w trasę.
         </p>
 
-        <div class="buttons">
-          <a class="button button-primary" href="#pdf">
-            Pobierz darmowy poradnik
+        <div class="button-row">
+          <a class="button button-primary" href="#poradnik">
+            Chcę darmowy poradnik
           </a>
 
           <a class="button button-secondary" href="#szkolenie">
             Poznaj szkolenie
           </a>
         </div>
+
+        <div class="hero-badge">
+          <span>✓</span>
+          Praktyczna checklista do wykorzystania przed akceptacją
+        </div>
       </div>
 
-      <div class="hero-card">
-        <span class="eyebrow">Sprawdź przed akceptacją</span>
-
-        <h3>
-          Ryzykowny zapis może oznaczać realną stratę pieniędzy
-        </h3>
-
-        <ul>
-          <li>Kara umowna</li>
-          <li>Potrącenie frachtu</li>
-          <li>Wydłużenie płatności</li>
-          <li>Odpowiedzialność za dokumenty</li>
-        </ul>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="section" id="problemy">
-    <div class="container">
-
-      <span class="eyebrow">Najczęstsze problemy</span>
-
-      <h2>
-        Ryzyko często kryje się w szczegółach zlecenia
-      </h2>
-
-      <p class="lead">
-        Akademia TSL przekłada skomplikowane zapisy prawne na konkretne
-        decyzje biznesowe przewoźnika.
-      </p>
-
-      <div class="cards">
-
-        <article class="card">
-          <div class="number">01</div>
-
-          <h3>Kary umowne</h3>
-
-          <p>
-            Sankcje za opóźnienie, brak dokumentów, neutralizację
-            albo kontakt z kontrahentem.
-          </p>
-        </article>
-
-        <article class="card">
-          <div class="number">02</div>
-
-          <h3>Potrącenie frachtu</h3>
-
-          <p>
-            Postanowienia pozwalające spedycji pomniejszyć należność
-            przewoźnika.
-          </p>
-        </article>
-
-        <article class="card">
-          <div class="number">03</div>
-
-          <h3>Termin płatności</h3>
-
-          <p>
-            Dodatkowe warunki, przez które termin płatności zaczyna
-            biec znacznie później.
-          </p>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-light" id="pdf">
-    <div class="container">
-
-      <div class="offer">
-
-        <div class="offer-cover">
-          <strong>7</strong>
-
+      <div class="scan-card reveal">
+        <div class="scan-top">
           <div>
-            <p style="color: rgba(255, 255, 255, 0.7);">
-              DARMOWY PORADNIK
-            </p>
+            <span class="eyebrow">Analiza zlecenia</span>
+            <div class="scan-title">Fragment dokumentu po kontroli</div>
+          </div>
 
-            <h2>
-              7 zapisów w zleceniu transportowym,
-              przez które możesz stracić fracht
-            </h2>
+          <span class="scan-status">⚠ wykryto ryzyko</span>
+        </div>
+
+        <div class="paper">
+          <div class="paper-line">
+            <strong>Termin załadunku:</strong> zgodnie ze zleceniem.
+          </div>
+
+          <div class="paper-line marked">
+            W przypadku jakiegokolwiek opóźnienia przewoźnik zapłaci
+            karę umowną w wysokości 100% frachtu.
+            <div class="law-note">
+              Czy kara obejmuje również zdarzenia niezależne od przewoźnika?
+            </div>
+          </div>
+
+          <div class="paper-line warning">
+            Termin płatności wynosi 60 dni od otrzymania kompletu
+            prawidłowo wystawionych dokumentów.
+            <div class="law-note" style="color: var(--orange);">
+              Od kiedy naprawdę zaczyna biec termin płatności?
+            </div>
+          </div>
+
+          <div class="paper-line marked">
+            Zleceniodawca jest uprawniony do jednostronnego potrącenia
+            wszelkich należności z wynagrodzenia przewoźnika.
+            <div class="law-note">
+              Jedno zdanie może pomniejszyć cały fracht.
+            </div>
+          </div>
+
+          <div class="paper-line">
+            Pozostałe warunki zgodnie z treścią zlecenia i załączników.
           </div>
         </div>
 
-        <div class="offer-content">
-          <span class="eyebrow">Materiał bezpłatny</span>
+        <div class="scan-footer">
+          <strong>Największe ryzyko bywa zapisane drobnym drukiem.</strong>
+          <span>Poradnik pokazuje, gdzie go szukać i o co zapytać.</span>
+        </div>
+      </div>
+    </div>
 
-          <h2>
-            Zobacz, co sprawdzić przed kliknięciem „akceptuję”
-          </h2>
-
-          <ul class="checklist">
-            <li>poznasz przykłady ryzykownych postanowień,</li>
-            <li>sprawdzisz dodatkowe warunki płatności,</li>
-            <li>rozpoznasz zapisy umożliwiające potrącenie,</li>
-            <li>otrzymasz prostą listę kontrolną.</li>
-          </ul>
-
-          <div class="buttons">
-            <a class="button button-primary" href="#kontakt">
-              Chcę otrzymać poradnik
-            </a>
-          </div>
+    <div class="trust-strip">
+      <div class="container trust-grid">
+        <div class="trust-item">
+          <span>§</span>
+          Materiał przygotowany przez adwokata
         </div>
 
+        <div class="trust-item">
+          <span>7</span>
+          Siedem najczęstszych czerwonych flag
+        </div>
+
+        <div class="trust-item">
+          <span>PDF</span>
+          Bezpłatny poradnik do pobrania
+        </div>
+
+        <div class="trust-item">
+          <span>✓</span>
+          Checklista do wykorzystania w firmie
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section" id="szkolenie">
-    <div class="container training">
+  <!-- 2. SIEDEM RYZYK -->
 
-      <div>
-        <span class="eyebrow">Szkolenie i pakiet dokumentów</span>
+  <section class="section" id="ryzyka">
+    <div class="container">
+      <div class="section-intro reveal">
+        <span class="eyebrow">Siedem czerwonych flag</span>
 
-        <h2>Zlecenie transportowe bez pułapek</h2>
+        <h2>
+          Siedem zapisów, przez które przewoźnicy tracą pieniądze
+        </h2>
 
         <p class="lead">
-          Jak uniknąć kar, potrąceń i utraty części wynagrodzenia
-          za wykonany przewóz.
+          Niepozorne postanowienia mogą zdecydować o wysokości frachtu,
+          terminie zapłaty i zakresie odpowiedzialności przewoźnika.
+          Właśnie te miejsca warto sprawdzać w pierwszej kolejności.
         </p>
-
-        <ul class="checklist">
-          <li>praktyczne szkolenie podzielone na moduły,</li>
-          <li>checklista czerwonych flag,</li>
-          <li>lista 30 ryzykownych klauzul,</li>
-          <li>wzory odpowiedzi i zastrzeżeń,</li>
-          <li>procedura sprawdzenia zlecenia.</li>
-        </ul>
       </div>
 
-      <aside class="price-card">
+      <div class="risk-grid">
+        <article class="risk-card reveal">
+          <div class="risk-number">01</div>
+          <h3>Kary umowne</h3>
+          <p>
+            Sprawdź, czy kara nie jest naliczana automatycznie, bez względu
+            na winę przewoźnika i rzeczywistą wysokość szkody.
+          </p>
+          <div class="risk-hook">Jedno opóźnienie może kosztować cały fracht.</div>
+        </article>
+
+        <article class="risk-card reveal">
+          <div class="risk-number">02</div>
+          <h3>Dokumenty przewozowe</h3>
+          <p>
+            Brak podpisu, pieczęci albo przekroczenie terminu wysłania
+            dokumentów może uruchomić karę lub wstrzymać płatność.
+          </p>
+          <div class="risk-hook">Formalność bywa droższa niż sam błąd.</div>
+        </article>
+
+        <article class="risk-card reveal">
+          <div class="risk-number">03</div>
+          <h3>Jednostronne potrącenie</h3>
+          <p>
+            Zleceniodawca może zastrzec sobie możliwość samodzielnego
+            pomniejszenia wynagrodzenia przewoźnika.
+          </p>
+          <div class="risk-hook">Fracht może zniknąć bez Twojej zgody.</div>
+        </article>
+
+        <article class="risk-card reveal">
+          <div class="risk-number">04</div>
+          <h3>Zakaz kontaktu</h3>
+          <p>
+            Zbyt szeroki zakaz kontaktowania się z nadawcą lub odbiorcą
+            może obejmować również działania potrzebne do wykonania przewozu.
+          </p>
+          <div class="risk-hook">Kierowca dzwoni – firma płaci karę.</div>
+        </article>
+
+        <article class="risk-card reveal">
+          <div class="risk-number">05</div>
+          <h3>Zakaz podzlecania</h3>
+          <p>
+            Powierzenie transportu innemu przewoźnikowi bez wymaganej zgody
+            może skutkować karą sięgającą znacznej części frachtu.
+          </p>
+          <div class="risk-hook">Sprawdź zapis przed zmianą auta lub podwykonawcy.</div>
+        </article>
+
+        <article class="risk-card reveal">
+          <div class="risk-number">06</div>
+          <h3>Neutralizacja dokumentów</h3>
+          <p>
+            Niejasne obowiązki związane z zakrywaniem danych lub zmianą
+            dokumentów mogą prowadzić do wielokrotnych sankcji.
+          </p>
+          <div class="risk-hook">Jedno zlecenie, kilka dokumentów, kilka kar.</div>
+        </article>
+
+        <article class="risk-card reveal">
+          <div class="risk-number">07</div>
+          <h3>Termin płatności</h3>
+          <p>
+            Deklarowane 45 albo 60 dni może zacząć biec dopiero po otrzymaniu
+            kompletu dokumentów uznanych przez kontrahenta za prawidłowe.
+          </p>
+          <div class="risk-hook">„60 dni” nie zawsze oznacza 60 dni.</div>
+        </article>
+      </div>
+
+      <div class="risk-cta reveal">
+        <p>
+          W bezpłatnym poradniku pokazuję, jak rozpoznać każdą z tych
+          klauzul, jakie może wywołać skutki i co sprawdzić przed akceptacją.
+        </p>
+
+        <a class="button button-primary" href="#poradnik">
+          Wyślij mi poradnik
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. PORADNIK -->
+
+  <section class="section section-light" id="poradnik">
+    <div class="container">
+      <div class="ebook-panel reveal">
+        <div class="ebook-cover-area">
+          <div class="ebook-mockup-wrap">
+            <div class="ebook-mockup">
+              <div class="ebook-mini-logo">Akademia TSL</div>
+
+              <h3>
+                7 zapisów w zleceniu transportowym,
+                <span>przez które przewoźnicy tracą pieniądze</span>
+              </h3>
+
+              <p>
+                Praktyczna checklista: co sprawdzić przed zaakceptowaniem
+                zlecenia transportowego.
+              </p>
+
+              <div class="ebook-icons">
+                <span>K</span>
+                <span>CMR</span>
+                <span>€</span>
+                <span>60D</span>
+                <span>7</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ebook-content">
+          <span class="eyebrow">Bezpłatny poradnik</span>
+
+          <h2>
+            Zobacz, co naprawdę podpisujesz
+          </h2>
+
+          <p>
+            To nie jest ogólny wykład z prawa. To praktyczny materiał,
+            który pomoże Ci szybciej wychwycić miejsca wymagające
+            dodatkowej uwagi przed przyjęciem transportu.
+          </p>
+
+          <ul class="checklist">
+            <li>
+              rozpoznasz siedem klauzul, które najczęściej prowadzą
+              do kar, potrąceń i opóźnień w płatności,
+            </li>
+
+            <li>
+              zobaczysz przykłady zapisów występujących w rzeczywistych
+              zleceniach transportowych,
+            </li>
+
+            <li>
+              dowiesz się, jakie konsekwencje może wywołać zaakceptowanie
+              każdej z opisanych klauzul,
+            </li>
+
+            <li>
+              poznasz pytania, które warto zadać zleceniodawcy
+              przed zaakceptowaniem dokumentu,
+            </li>
+
+            <li>
+              otrzymasz prostą checklistę kontroli zlecenia
+              do wykorzystania przez właściciela, spedytora lub dyspozytora,
+            </li>
+
+            <li>
+              zyskasz schemat szybkiej weryfikacji bez czytania
+              każdego zlecenia jak rozprawy doktorskiej.
+            </li>
+          </ul>
+
+          <form
+            class="mini-form"
+            name="pobranie-poradnika"
+            method="POST"
+            data-netlify="true"
+          >
+            <input type="hidden" name="form-name" value="pobranie-poradnika">
+
+            <h3>Wyślij mi bezpłatny poradnik</h3>
+
+            <div class="form-grid">
+              <label>
+                Imię
+                <input
+                  type="text"
+                  name="imie"
+                  autocomplete="given-name"
+                  required
+                >
+              </label>
+
+              <label>
+                Adres e-mail
+                <input
+                  type="email"
+                  name="email"
+                  autocomplete="email"
+                  required
+                >
+              </label>
+            </div>
+
+            <label class="consent">
+              <input type="checkbox" name="zgoda" value="tak" required>
+
+              <span>
+                Chcę otrzymać poradnik oraz informacje związane
+                z materiałami Akademii TSL. Zgodę mogę wycofać
+                w dowolnym momencie.
+              </span>
+            </label>
+
+            <button class="button button-primary button-full" type="submit">
+              Tak, wyślij mi poradnik
+            </button>
+
+            <p class="form-note">
+              Poradnik jest bezpłatny. Materiał ma charakter informacyjny
+              i nie zastępuje indywidualnej porady prawnej.
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. SZKOLENIE -->
+
+  <section class="section" id="szkolenie">
+    <div class="container training-grid">
+      <div class="reveal">
+        <span class="eyebrow">Szkolenie i pakiet dokumentów</span>
+
+        <h2>
+          Pełny system analizy zleceń transportowych
+        </h2>
+
+        <p class="lead">
+          Poradnik pokazuje siedem najczęstszych pułapek. Szkolenie
+          idzie krok dalej: uczy, jak analizować całe zlecenie,
+          reagować na niekorzystne warunki i wdrożyć w firmie
+          powtarzalną procedurę kontroli.
+        </p>
+
+        <div class="training-steps">
+          <article class="training-step">
+            <span>1</span>
+            <strong>Szkolenie online w modułach</strong>
+            <p>
+              Konkretne lekcje, przykłady zapisów i omówienie skutków
+              prawnych oraz finansowych.
+            </p>
+          </article>
+
+          <article class="training-step">
+            <span>2</span>
+            <strong>Lista 30 ryzykownych klauzul</strong>
+            <p>
+              Rozszerzony katalog zapisów, które warto sprawdzać
+              przed każdym transportem.
+            </p>
+          </article>
+
+          <article class="training-step">
+            <span>3</span>
+            <strong>Checklista czerwonych flag</strong>
+            <p>
+              Gotowy dokument do wykorzystania przez właściciela,
+              spedytora lub dyspozytora.
+            </p>
+          </article>
+
+          <article class="training-step">
+            <span>4</span>
+            <strong>Wzory odpowiedzi do spedycji</strong>
+            <p>
+              Gotowe propozycje reakcji na niekorzystne postanowienia
+              i próby jednostronnego obciążenia.
+            </p>
+          </article>
+
+          <article class="training-step">
+            <span>5</span>
+            <strong>Wzory zastrzeżeń do zlecenia</strong>
+            <p>
+              Praktyczne klauzule, które można wykorzystać
+              przed zaakceptowaniem dokumentu.
+            </p>
+          </article>
+
+          <article class="training-step">
+            <span>6</span>
+            <strong>Procedura kontroli przed akceptacją</strong>
+            <p>
+              Jasny schemat: co sprawdzić, kto ma to zrobić
+              i kiedy należy zatrzymać akceptację.
+            </p>
+          </article>
+
+          <article class="training-step">
+            <span>7</span>
+            <strong>Pakiet dokumentów firmowych</strong>
+            <p>
+              Materiały, które pomagają ujednolicić pracę zespołu
+              i ograniczyć decyzje podejmowane „na wyczucie”.
+            </p>
+          </article>
+
+          <article class="training-step">
+            <span>8</span>
+            <strong>Materiały do ponownego wykorzystania</strong>
+            <p>
+              Dokumenty pozostają w firmie i mogą być stosowane
+              przy kolejnych zleceniach.
+            </p>
+          </article>
+        </div>
+      </div>
+
+      <aside class="price-card reveal">
         <span class="eyebrow">Planowana premiera</span>
 
-        <h3>Pakiet ochrony pieniędzy przewoźnika</h3>
+        <h3>Zlecenie transportowe bez pułapek</h3>
+
+        <p>
+          Jak ograniczyć ryzyko kar, potrąceń i utraty części
+          wynagrodzenia jeszcze przed przyjęciem transportu.
+        </p>
 
         <div class="price">297 zł</div>
 
-        <p>
-          Zapisz się na listę zainteresowanych i otrzymaj informację
-          o uruchomieniu sprzedaży.
-        </p>
+        <div class="price-caption">
+          planowana cena premierowa
+        </div>
 
-        <div class="buttons">
+        <ul class="price-details">
+          <li>szkolenie online dostępne z dowolnego miejsca,</li>
+          <li>lista 30 ryzykownych klauzul,</li>
+          <li>checklisty, procedury i wzory dokumentów,</li>
+          <li>gotowe odpowiedzi i zastrzeżenia do zleceń,</li>
+          <li>materiały do wykorzystania w codziennej pracy firmy.</li>
+        </ul>
+
+        <div class="coming-badge">
+          Zapisz się na listę zainteresowanych, aby otrzymać informację
+          o premierze i warunkach startowych.
+        </div>
+
+        <div class="button-row">
           <a class="button button-primary" href="#kontakt">
             Zapisz mnie na listę
           </a>
         </div>
       </aside>
-
     </div>
   </section>
 
-  <section class="section section-light" id="o-akademii">
-    <div class="container about">
+  <!-- 5. KONSEKWENCJE -->
 
-      <div class="photo">
-        <strong>Miejsce na zdjęcie autorki</strong>
+  <section class="section section-navy">
+    <div class="container">
+      <div class="section-intro center reveal">
+        <span class="eyebrow">Koszt jednego zdania</span>
+
+        <h2 style="color: white;">
+          Jedna klauzula może kosztować znacznie więcej niż szkolenie
+        </h2>
+
+        <p class="lead" style="color: rgba(255,255,255,.72);">
+          Celem nie jest czytanie zlecenia godzinami. Celem jest wiedzieć,
+          które miejsca sprawdzić natychmiast.
+        </p>
       </div>
 
-      <div>
-        <span class="eyebrow">O Akademii TSL</span>
+      <div class="consequence-grid">
+        <article class="consequence-card reveal">
+          <div class="consequence-icon">100%</div>
+          <h3>Cały fracht</h3>
+          <p>
+            Kara umowna może zostać określona jako równowartość
+            całego wynagrodzenia za przewóz.
+          </p>
+        </article>
+
+        <article class="consequence-card reveal">
+          <div class="consequence-icon">−€</div>
+          <h3>Potrącenie</h3>
+          <p>
+            Zleceniodawca może pomniejszyć płatność, zanim przewoźnik
+            zdąży zakwestionować obciążenie.
+          </p>
+        </article>
+
+        <article class="consequence-card reveal">
+          <div class="consequence-icon">60+</div>
+          <h3>Miesiące oczekiwania</h3>
+          <p>
+            Błąd w dokumentach może przesunąć początek biegu
+            terminu płatności.
+          </p>
+        </article>
+
+        <article class="consequence-card reveal">
+          <div class="consequence-icon">§</div>
+          <h3>Kosztowny spór</h3>
+          <p>
+            Brak reakcji na początku utrudnia późniejsze odzyskanie
+            pełnej należności.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. DLA KOGO -->
+
+  <section class="section section-light">
+    <div class="container">
+      <div class="section-intro center reveal">
+        <span class="eyebrow">Dla kogo jest Akademia TSL</span>
 
         <h2>
-          Prawo wyjaśnione językiem codziennych decyzji transportowych
+          Dla wszystkich, którzy podejmują decyzje przed wysłaniem auta
+        </h2>
+      </div>
+
+      <div class="audience-grid">
+        <article class="audience-card reveal">
+          <div class="audience-label">01</div>
+          <h3>Właściciele firm transportowych</h3>
+          <p>
+            Dla przedsiębiorców, którzy chcą ograniczać ryzyko finansowe
+            i uporządkować zasady przyjmowania zleceń.
+          </p>
+        </article>
+
+        <article class="audience-card reveal">
+          <div class="audience-label">02</div>
+          <h3>Spedytorzy</h3>
+          <p>
+            Dla osób negocjujących warunki przewozu i odpowiadających
+            za wybór oraz akceptację zlecenia.
+          </p>
+        </article>
+
+        <article class="audience-card reveal">
+          <div class="audience-label">03</div>
+          <h3>Dyspozytorzy</h3>
+          <p>
+            Dla osób podejmujących szybkie decyzje operacyjne
+            pod presją czasu i dostępności pojazdów.
+          </p>
+        </article>
+
+        <article class="audience-card reveal">
+          <div class="audience-label">04</div>
+          <h3>Administracja transportowa</h3>
+          <p>
+            Dla pracowników odpowiedzialnych za dokumenty,
+            faktury, terminy i kompletność rozliczeń.
+          </p>
+        </article>
+
+        <article class="audience-card reveal">
+          <div class="audience-label">05</div>
+          <h3>Osoby rozliczające przewozy</h3>
+          <p>
+            Dla zespołów reagujących na noty obciążeniowe,
+            potrącenia i opóźnienia w płatnościach.
+          </p>
+        </article>
+
+        <article class="audience-card reveal">
+          <div class="audience-label">06</div>
+          <h3>Nowe firmy w branży TSL</h3>
+          <p>
+            Dla osób, które dopiero budują procedury i chcą uniknąć
+            kosztownej nauki metodą prób i błędów.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. O AUTORCE -->
+
+  <section class="section" id="o-autorce">
+    <div class="container about-grid">
+      <div class="author-photo reveal">
+        <div>
+          <strong>Miejsce na zdjęcie autorki</strong>
+          <span>adw. Jolanta Czesielska-Biel</span>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <span class="eyebrow">O autorce</span>
+
+        <h2>
+          Prawo, które można zastosować przed kolejnym transportem
         </h2>
 
         <p class="lead">
-          Akademia TSL powstaje dla przewoźników i przedsiębiorców,
-          którzy potrzebują jasnych procedur, praktycznych dokumentów
-          i wiedzy możliwej do zastosowania od razu.
+          Jestem adwokatem i zajmuję się obsługą prawną przedsiębiorców
+          z branży transportowej, spedycyjnej i logistycznej.
         </p>
 
         <p style="margin-top: 18px;">
-          Materiały przygotowuje adwokat zajmująca się obsługą prawną
-          przedsiębiorców z branży transportowej, spedycyjnej i logistycznej.
+          W praktyce widzę, że wiele sporów nie zaczyna się przy rozładunku
+          ani przy wystawieniu noty. Zaczyna się wcześniej — w chwili,
+          gdy firma akceptuje zlecenie bez wychwycenia ryzykownego zapisu.
         </p>
-      </div>
 
+        <p style="margin-top: 18px;">
+          Dlatego stworzyłam Akademię TSL: miejsce, w którym skomplikowane
+          klauzule przekładam na proste procedury, checklisty i gotowe
+          działania możliwe do zastosowania w codziennej pracy przewoźnika.
+        </p>
+
+        <div class="author-points">
+          <div class="author-point">Analiza zleceń i umów</div>
+          <div class="author-point">Obsługa prawna branży TSL</div>
+          <div class="author-point">Reprezentacja w sporach</div>
+          <div class="author-point">Szkolenia i materiały praktyczne</div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="section" id="kontakt">
-    <div class="container contact">
+  <!-- 8. DLACZEGO AKADEMIA -->
 
-      <div>
+  <section class="section section-cream">
+    <div class="container">
+      <div class="section-intro center reveal">
+        <span class="eyebrow">Dlaczego Akademia TSL</span>
+
+        <h2>
+          Mniej teorii. Więcej decyzji, które chronią pieniądze firmy.
+        </h2>
+      </div>
+
+      <div class="benefit-grid">
+        <article class="benefit-card reveal">
+          <span>01</span>
+          <h3>Prosty język</h3>
+          <p>
+            Bez prawniczego labiryntu. Wiesz, czego szukać
+            i co dany zapis może oznaczać.
+          </p>
+        </article>
+
+        <article class="benefit-card reveal">
+          <span>02</span>
+          <h3>Praktyka branży TSL</h3>
+          <p>
+            Przykłady odnoszą się do realnych zleceń, dokumentów
+            i problemów przewoźników.
+          </p>
+        </article>
+
+        <article class="benefit-card reveal">
+          <span>03</span>
+          <h3>Gotowy sposób działania</h3>
+          <p>
+            Checklisty i procedury ograniczają przypadkowe decyzje
+            i pomagają ujednolicić pracę zespołu.
+          </p>
+        </article>
+
+        <article class="benefit-card reveal">
+          <span>04</span>
+          <h3>Ochrona wynagrodzenia</h3>
+          <p>
+            Celem jest ograniczenie kar, potrąceń, opóźnień
+            oraz kosztownych sporów.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. CTA -->
+
+  <section class="section">
+    <div class="container">
+      <div class="mid-cta reveal">
+        <div>
+          <span class="eyebrow">Pierwszy krok</span>
+          <h2>Sprawdź siedem zapisów przed kolejną akceptacją</h2>
+          <p>
+            Pobierz bezpłatny poradnik i przekaż checklistę osobom,
+            które przyjmują zlecenia w Twojej firmie.
+          </p>
+        </div>
+
+        <a class="button button-primary" href="#poradnik">
+          Chcę otrzymać poradnik
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. FAQ -->
+
+  <section class="section section-light" id="faq">
+    <div class="container">
+      <div class="section-intro center reveal">
+        <span class="eyebrow">Najczęstsze pytania</span>
+        <h2>Pytania dotyczące poradnika i szkolenia</h2>
+      </div>
+
+      <div class="faq-list">
+        <details class="reveal">
+          <summary>Czy poradnik naprawdę jest bezpłatny?</summary>
+          <div class="faq-answer">
+            <p>
+              Tak. Poradnik otrzymasz bez opłat po zapisaniu się
+              przez formularz znajdujący się na stronie.
+            </p>
+          </div>
+        </details>
+
+        <details class="reveal">
+          <summary>Dla kogo przygotowano materiał?</summary>
+          <div class="faq-answer">
+            <p>
+              Przede wszystkim dla przewoźników, właścicieli firm
+              transportowych, spedytorów, dyspozytorów oraz osób
+              odpowiedzialnych za dokumenty i rozliczenia przewozów.
+            </p>
+          </div>
+        </details>
+
+        <details class="reveal">
+          <summary>Czy poradnik zawiera przykłady zapisów?</summary>
+          <div class="faq-answer">
+            <p>
+              Tak. Materiał pokazuje przykłady klauzul pojawiających się
+              w zleceniach i wyjaśnia, jakie mogą wywołać konsekwencje.
+            </p>
+          </div>
+        </details>
+
+        <details class="reveal">
+          <summary>Czy poradnik jest aktualny?</summary>
+          <div class="faq-answer">
+            <p>
+              Materiał został przygotowany na podstawie praktycznych
+              problemów występujących w obrocie transportowym.
+              Każdy konkretny przypadek może jednak wymagać
+              indywidualnej analizy.
+            </p>
+          </div>
+        </details>
+
+        <details class="reveal">
+          <summary>Czy poradnik zastępuje indywidualną poradę prawną?</summary>
+          <div class="faq-answer">
+            <p>
+              Nie. Poradnik ma charakter informacyjny i edukacyjny.
+              Konkretne zlecenie lub spór może wymagać odrębnej konsultacji.
+            </p>
+          </div>
+        </details>
+
+        <details class="reveal">
+          <summary>Jak otrzymam poradnik?</summary>
+          <div class="faq-answer">
+            <p>
+              Po prawidłowym zapisaniu się materiał zostanie wysłany
+              na wskazany adres e-mail.
+            </p>
+          </div>
+        </details>
+
+        <details class="reveal">
+          <summary>Czy szkolenie będzie nagrane i dostępne online?</summary>
+          <div class="faq-answer">
+            <p>
+              Tak. Planowane szkolenie będzie dostępne online,
+              aby można było korzystać z niego z dowolnego miejsca.
+            </p>
+          </div>
+        </details>
+
+        <details class="reveal">
+          <summary>Czy szkolenie jest także dla małych firm?</summary>
+          <div class="faq-answer">
+            <p>
+              Tak. Materiały są przygotowywane zarówno dla większych zespołów,
+              jak i dla małych firm, w których zlecenia analizuje właściciel
+              albo jedna osoba.
+            </p>
+          </div>
+        </details>
+
+        <details class="reveal">
+          <summary>Czy otrzymam fakturę za szkolenie?</summary>
+          <div class="faq-answer">
+            <p>
+              Tak. Przy sprzedaży szkolenia będzie możliwe otrzymanie
+              faktury na dane firmy.
+            </p>
+          </div>
+        </details>
+
+        <details class="reveal">
+          <summary>Kiedy rozpocznie się sprzedaż szkolenia?</summary>
+          <div class="faq-answer">
+            <p>
+              Termin premiery zostanie przekazany osobom zapisanym
+              na listę zainteresowanych.
+            </p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. KONTAKT -->
+
+  <section class="section" id="kontakt">
+    <div class="container contact-grid">
+      <div class="reveal">
         <span class="eyebrow">Kontakt</span>
 
-        <h2>Masz pytanie dotyczące Akademii TSL?</h2>
+        <h2>
+          Masz pytanie dotyczące Akademii TSL?
+        </h2>
 
         <p class="lead">
-          Napisz wiadomość. Odpowiemy na wskazany adres e-mail.
+          Napisz w sprawie poradnika, szkolenia, współpracy
+          lub materiałów dla branży transportowej.
         </p>
 
-        <p style="margin-top: 24px;">
-          <strong>biuro@lex-legal.pl</strong>
-        </p>
+        <div class="contact-data">
+          <div class="contact-item">
+            <strong>Adres e-mail</strong>
+            <a href="mailto:biuro@lex-legal.pl">biuro@lex-legal.pl</a>
+          </div>
+
+          <div class="contact-item">
+            <strong>Autorka materiałów</strong>
+            <span>adw. Jolanta Czesielska-Biel</span>
+          </div>
+
+          <div class="contact-item">
+            <strong>Zakres tematyczny</strong>
+            <span>transport, spedycja, logistyka, umowy i zlecenia</span>
+          </div>
+        </div>
       </div>
 
       <form
+        class="contact-form reveal"
         name="kontakt-akademia-tsl"
         method="POST"
         data-netlify="true"
       >
-        <input
-          type="hidden"
-          name="form-name"
-          value="kontakt-akademia-tsl"
-        >
+        <input type="hidden" name="form-name" value="kontakt-akademia-tsl">
 
         <label>
           Imię i nazwisko
-          <input type="text" name="imie" required>
+          <input
+            type="text"
+            name="imie-i-nazwisko"
+            autocomplete="name"
+            required
+          >
         </label>
 
         <label>
           Adres e-mail
-          <input type="email" name="email" required>
+          <input
+            type="email"
+            name="email"
+            autocomplete="email"
+            required
+          >
+        </label>
+
+        <label>
+          Temat
+          <input
+            type="text"
+            name="temat"
+            placeholder="np. lista zainteresowanych szkoleniem"
+          >
         </label>
 
         <label>
@@ -735,11 +2369,18 @@
           <textarea name="wiadomosc" required></textarea>
         </label>
 
+        <label class="consent">
+          <input type="checkbox" name="zgoda-kontakt" value="tak" required>
+
+          <span>
+            Wyrażam zgodę na kontakt w sprawie przesłanej wiadomości.
+          </span>
+        </label>
+
         <button class="button button-primary" type="submit">
           Wyślij wiadomość
         </button>
       </form>
-
     </div>
   </section>
 
@@ -747,17 +2388,126 @@
 
 <footer>
   <div class="container">
-    <strong>Akademia TSL</strong>
+    <div class="footer-cta">
+      <div>
+        <h3>Nie pozwól, by jedno zdanie zabrało cały fracht.</h3>
+        <p>Pobierz bezpłatną checklistę przed kolejną akceptacją.</p>
+      </div>
 
-    <p style="margin-top: 10px; color: rgba(255, 255, 255, 0.7);">
-      Praktyczna wiedza prawna dla branży transportowej.
-    </p>
+      <a class="button button-primary" href="#poradnik">
+        Pobierz poradnik
+      </a>
+    </div>
 
-    <p style="margin-top: 25px; color: rgba(255, 255, 255, 0.55);">
-      © 2026 Akademia TSL. Wszelkie prawa zastrzeżone.
-    </p>
+    <div class="footer-grid">
+      <div>
+        <img
+          class="footer-logo"
+          src="logo-akademia-tsl.jpg.png"
+          alt="Akademia TSL"
+        >
+
+        <p style="margin-top: 18px; max-width: 470px;">
+          Praktyczna wiedza prawna, szkolenia i materiały
+          dla przewoźników oraz przedsiębiorców z branży TSL.
+        </p>
+
+        <p style="margin-top: 12px;">
+          Autorka: adw. Jolanta Czesielska-Biel
+        </p>
+      </div>
+
+      <div>
+        <h3>Akademia TSL</h3>
+
+        <ul class="footer-links">
+          <li><a href="#ryzyka">7 ryzyk</a></li>
+          <li><a href="#poradnik">Darmowy poradnik</a></li>
+          <li><a href="#szkolenie">Szkolenie</a></li>
+          <li><a href="#o-autorce">O autorce</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Informacje</h3>
+
+        <ul class="footer-links">
+          <li><a href="#">Polityka prywatności</a></li>
+          <li><a href="#">Regulamin</a></li>
+          <li><a href="#">Polityka cookies</a></li>
+          <li>
+            <a href="mailto:biuro@lex-legal.pl">
+              biuro@lex-legal.pl
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Akademia TSL. Wszelkie prawa zastrzeżone.</span>
+      <span>Materiały mają charakter edukacyjny i informacyjny.</span>
+    </div>
   </div>
 </footer>
 
+<a class="mobile-sticky-cta" href="#poradnik">
+  Pobierz darmowy poradnik
+</a>
+
+<script>
+  const toggle = document.querySelector(".mobile-toggle");
+  const menu = document.querySelector(".menu");
+  const menuLinks = document.querySelectorAll(".menu a");
+
+  if (toggle && menu) {
+    toggle.addEventListener("click", () => {
+      const isOpen = menu.classList.toggle("open");
+
+      toggle.setAttribute("aria-expanded", String(isOpen));
+      toggle.textContent = isOpen ? "×" : "☰";
+      document.body.classList.toggle("menu-open", isOpen);
+    });
+
+    menuLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        menu.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.textContent = "☰";
+        document.body.classList.remove("menu-open");
+      });
+    });
+  }
+
+  const revealElements = document.querySelectorAll(".reveal");
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.12
+      }
+    );
+
+    revealElements.forEach((element) => observer.observe(element));
+  } else {
+    revealElements.forEach((element) => element.classList.add("visible"));
+  }
+</script>
+
 </body>
 </html>
+'''
+
+path = Path("/mnt/data/akademia-tsl-index-nowa-wersja.html")
+path.write_text(html, encoding="utf-8")
+print(f"Gotowe: {path}")
