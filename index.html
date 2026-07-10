@@ -1305,12 +1305,17 @@
     /* ANIMACJE */
 
     .reveal {
-      opacity: 0;
-      transform: translateY(24px);
+      opacity: 1;
+      transform: none;
       transition: opacity 0.65s ease, transform 0.65s ease;
     }
 
-    .reveal.visible {
+    .js-enabled .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    .js-enabled .reveal.visible {
       opacity: 1;
       transform: translateY(0);
     }
@@ -2147,6 +2152,8 @@
   Pobierz darmowy poradnik
 </a>
 <script>
+  document.documentElement.classList.add("js-enabled");
+
   const toggle = document.querySelector(".mobile-toggle");
   const menu = document.querySelector(".menu");
   const menuLinks = document.querySelectorAll(".menu a");
@@ -2169,7 +2176,6 @@
       });
     });
   }
-  });
 
   const revealElements = document.querySelectorAll(".reveal");
 
