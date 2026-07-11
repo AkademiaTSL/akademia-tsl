@@ -2019,6 +2019,152 @@
       }
     }
 
+
+    /* FINALNA WERSJA — KOMPAKTOWA SEKCJA SZKOLENIA */
+
+    .training-grid-compact {
+      grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
+      gap: 42px;
+      align-items: start;
+    }
+
+    .training-lead {
+      max-width: 680px;
+    }
+
+    .training-steps-compact {
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .training-step-compact {
+      min-height: 132px;
+      padding: 18px;
+      display: grid;
+      grid-template-columns: 38px 1fr;
+      gap: 13px;
+      align-items: start;
+      border-radius: 16px;
+    }
+
+    .training-step-compact span {
+      width: 38px;
+      height: 38px;
+      margin-bottom: 0;
+      border-radius: 10px;
+      font-size: 0.9rem;
+    }
+
+    .training-step-compact strong {
+      display: block;
+      margin-top: 2px;
+      font-size: 1rem;
+      line-height: 1.3;
+    }
+
+    .training-step-compact p {
+      margin-top: 7px;
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    .training-extra {
+      margin-top: 18px;
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      color: var(--navy);
+      background: var(--cream);
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+
+    .price-card-compact {
+      position: sticky;
+      top: 108px;
+      padding: 32px;
+      border-radius: 22px;
+    }
+
+    .price-card-compact h3 {
+      font-size: 1.38rem;
+    }
+
+    .price-card-compact .price {
+      margin-top: 18px;
+      font-size: 3rem;
+    }
+
+    .price-details-compact {
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .price-details-compact li {
+      padding-bottom: 10px;
+      font-size: 0.92rem;
+    }
+
+    .price-note {
+      margin-top: 18px;
+      padding: 12px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 12px;
+      color: rgba(255, 255, 255, 0.76);
+      background: rgba(255, 255, 255, 0.06);
+      font-size: 0.84rem;
+      line-height: 1.5;
+    }
+
+    .price-card-compact .button-row {
+      margin-top: 22px;
+    }
+
+    .price-card-compact .button {
+      width: 100%;
+    }
+
+    @media (max-width: 1000px) {
+      .training-grid-compact {
+        grid-template-columns: minmax(0, 1fr) minmax(280px, 0.72fr);
+        gap: 32px;
+      }
+
+      .training-steps-compact {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .training-grid-compact {
+        grid-template-columns: 1fr;
+      }
+
+      .price-card-compact {
+        position: static;
+        max-width: 620px;
+      }
+
+      .training-steps-compact {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .training-steps-compact {
+        grid-template-columns: 1fr;
+      }
+
+      .training-step-compact {
+        min-height: 0;
+      }
+
+      .price-card-compact {
+        padding: 28px;
+      }
+    }
+
 </style>
 </head>
 <body>
@@ -2368,119 +2514,132 @@
   </div>
 </section>
 
+
 <!-- 4. SZKOLENIE -->
+
 <section class="section" id="szkolenie">
-<div class="container training-grid">
-<div class="reveal">
-<span class="eyebrow">Szkolenie i pakiet dokumentów</span>
-<h2>
-          Pełny system analizy zleceń transportowych
-        </h2>
-<p class="lead">
-          Poradnik pokazuje siedem najczęstszych pułapek. Szkolenie
-          idzie krok dalej: uczy, jak analizować całe zlecenie,
-          reagować na niekorzystne warunki i wdrożyć w firmie
-          powtarzalną procedurę kontroli.
-        </p>
-<div class="training-steps">
-<article class="training-step">
-<span>1</span>
-<strong>Szkolenie online w modułach</strong>
-<p>
-              Konkretne lekcje, przykłady zapisów i omówienie skutków
-              prawnych oraz finansowych.
+  <div class="container training-grid training-grid-compact">
+
+    <div class="reveal">
+      <span class="eyebrow">
+        Szkolenie i pakiet dokumentów
+      </span>
+
+      <h2>
+        Pełny system analizy zleceń transportowych
+      </h2>
+
+      <p class="lead training-lead">
+        Poradnik pokazuje 7 najczęstszych pułapek. Szkolenie uczy,
+        jak analizować całe zlecenie, reagować na niekorzystne warunki
+        i wdrożyć w firmie prostą procedurę kontroli.
+      </p>
+
+      <div class="training-steps training-steps-compact">
+
+        <article class="training-step training-step-compact">
+          <span>1</span>
+
+          <div>
+            <strong>Szkolenie online</strong>
+
+            <p>
+              Praktyczne moduły o analizie zleceń
+              i ryzykownych klauzulach.
             </p>
-</article>
-<article class="training-step">
-<span>2</span>
-<strong>Lista 30 ryzykownych klauzul</strong>
-<p>
-              Rozszerzony katalog zapisów, które warto sprawdzać
-              przed każdym transportem.
+          </div>
+        </article>
+
+        <article class="training-step training-step-compact">
+          <span>2</span>
+
+          <div>
+            <strong>30 ryzykownych zapisów</strong>
+
+            <p>
+              Lista najczęściej spotykanych postanowień,
+              które wymagają szczególnej uwagi.
             </p>
-</article>
-<article class="training-step">
-<span>3</span>
-<strong>Checklista czerwonych flag</strong>
-<p>
-              Gotowy dokument do wykorzystania przez właściciela,
-              spedytora lub dyspozytora.
+          </div>
+        </article>
+
+        <article class="training-step training-step-compact">
+          <span>3</span>
+
+          <div>
+            <strong>Checklisty i procedury</strong>
+
+            <p>
+              Gotowe materiały dla właściciela,
+              spedytora i dyspozytora.
             </p>
-</article>
-<article class="training-step">
-<span>4</span>
-<strong>Wzory odpowiedzi do spedycji</strong>
-<p>
-              Gotowe propozycje reakcji na niekorzystne postanowienia
-              i próby jednostronnego obciążenia.
+          </div>
+        </article>
+
+        <article class="training-step training-step-compact">
+          <span>4</span>
+
+          <div>
+            <strong>Wzory odpowiedzi i zastrzeżeń</strong>
+
+            <p>
+              Gotowe reakcje na niekorzystne warunki
+              i próby obciążenia przewoźnika.
             </p>
-</article>
-<article class="training-step">
-<span>5</span>
-<strong>Wzory zastrzeżeń do zlecenia</strong>
-<p>
-              Praktyczne klauzule, które można wykorzystać
-              przed zaakceptowaniem dokumentu.
-            </p>
-</article>
-<article class="training-step">
-<span>6</span>
-<strong>Procedura kontroli przed akceptacją</strong>
-<p>
-              Jasny schemat: co sprawdzić, kto ma to zrobić
-              i kiedy należy zatrzymać akceptację.
-            </p>
-</article>
-<article class="training-step">
-<span>7</span>
-<strong>Pakiet dokumentów firmowych</strong>
-<p>
-              Materiały, które pomagają ujednolicić pracę zespołu
-              i ograniczyć decyzje podejmowane „na wyczucie”.
-            </p>
-</article>
-<article class="training-step">
-<span>8</span>
-<strong>Materiały do ponownego wykorzystania</strong>
-<p>
-              Dokumenty pozostają w firmie i mogą być stosowane
-              przy kolejnych zleceniach.
-            </p>
-</article>
-</div>
-</div>
-<aside class="price-card reveal">
-<span class="eyebrow">Planowana premiera</span>
-<h3>Zlecenie transportowe bez pułapek</h3>
-<p>
-          Jak ograniczyć ryzyko kar, potrąceń i utraty części
-          wynagrodzenia jeszcze przed przyjęciem transportu.
-        </p>
-<div class="price">297 zł</div>
-<div class="price-caption">
-          planowana cena premierowa
-        </div>
-<ul class="price-details">
-<li>szkolenie online dostępne z dowolnego miejsca,</li>
-<li>lista 30 ryzykownych klauzul,</li>
-<li>checklisty, procedury i wzory dokumentów,</li>
-<li>gotowe odpowiedzi i zastrzeżenia do zleceń,</li>
-<li>materiały do wykorzystania w codziennej pracy firmy.</li>
-</ul>
-<div class="coming-badge">
-          Zapisz się na listę zainteresowanych, aby otrzymać informację
-          o premierze i warunkach startowych.
-        </div>
-<div class="button-row">
-<a class="button button-primary" href="#kontakt">
-            Zapisz mnie na listę
-          </a>
-</div>
-</aside>
-</div>
+          </div>
+        </article>
+
+      </div>
+
+      <p class="training-extra">
+        W pakiecie również materiały do ponownego wykorzystania
+        w codziennej pracy firmy.
+      </p>
+    </div>
+
+    <aside class="price-card price-card-compact reveal">
+      <span class="eyebrow">
+        Planowana premiera
+      </span>
+
+      <h3>
+        Zlecenie transportowe bez pułapek
+      </h3>
+
+      <p>
+        Pełny system ograniczania ryzyka kar,
+        potrąceń i utraty części wynagrodzenia.
+      </p>
+
+      <div class="price">
+        297 zł
+      </div>
+
+      <div class="price-caption">
+        planowana cena premierowa
+      </div>
+
+      <ul class="price-details price-details-compact">
+        <li>szkolenie online,</li>
+        <li>checklisty, procedury i wzory,</li>
+        <li>materiały do wykorzystania w firmie.</li>
+      </ul>
+
+      <p class="price-note">
+        Otrzymaj informację o premierze i cenie startowej.
+      </p>
+
+      <div class="button-row">
+        <a class="button button-primary" href="#kontakt">
+          Zapisz mnie na listę
+        </a>
+      </div>
+    </aside>
+
+  </div>
 </section>
 
-  <!-- O AUTORCE -->
+<!-- O AUTORCE -->
 
   <section class="section author-section" id="o-autorce">
     <div class="container author-grid">
