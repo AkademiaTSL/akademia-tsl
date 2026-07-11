@@ -1621,7 +1621,405 @@
         display: flex;
       }
     }
-  </style>
+  
+    /* FINALNY AUDYT — HERO */
+
+    .legal-document-visual {
+      position: relative;
+      width: min(100%, 560px);
+      margin-left: auto;
+      padding: 18px 18px 22px;
+    }
+
+    .legal-document-shadow {
+      position: absolute;
+      inset: 42px 4px 4px 44px;
+      border-radius: 24px;
+      background: rgba(9, 39, 70, 0.09);
+      filter: blur(18px);
+      transform: rotate(2deg);
+    }
+
+    .legal-document {
+      position: relative;
+      z-index: 1;
+      padding: 26px 27px 24px;
+      border: 1px solid rgba(9, 39, 70, 0.12);
+      border-radius: 9px;
+      background:
+        linear-gradient(
+          90deg,
+          transparent 0 30px,
+          rgba(197, 61, 61, 0.13) 30px 31px,
+          transparent 31px
+        ),
+        repeating-linear-gradient(
+          #ffffff 0 34px,
+          #eef2f5 35px
+        );
+      box-shadow: 0 24px 54px rgba(9, 39, 70, 0.17);
+      transform: rotate(1deg);
+    }
+
+    .legal-document::before {
+      content: "";
+      position: absolute;
+      top: 14px;
+      right: 18px;
+      width: 58px;
+      height: 18px;
+      border-radius: 3px;
+      background: rgba(239, 118, 34, 0.08);
+      transform: rotate(-3deg);
+    }
+
+    .legal-document-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 0 4px 17px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .document-kicker {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 0.7rem;
+      font-weight: 900;
+      letter-spacing: 0.11em;
+    }
+
+    .legal-document-header strong {
+      color: var(--navy);
+      font-size: 1rem;
+    }
+
+    .document-review-stamp {
+      padding: 7px 9px;
+      border: 2px solid rgba(197, 61, 61, 0.52);
+      border-radius: 5px;
+      color: var(--red);
+      font-size: 0.68rem;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transform: rotate(-4deg);
+    }
+
+    .document-meta {
+      padding: 12px 4px 8px 16px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 0.72rem;
+    }
+
+    .document-clause {
+      position: relative;
+      margin: 12px 0 0;
+      padding: 14px 155px 14px 16px;
+      min-height: 105px;
+      border-radius: 9px;
+      background: rgba(255, 255, 255, 0.88);
+    }
+
+    .document-clause::after {
+      content: "";
+      position: absolute;
+      left: 52px;
+      right: 146px;
+      bottom: 14px;
+      height: 8px;
+      background: rgba(239, 118, 34, 0.16);
+      transform: rotate(-1deg);
+    }
+
+    .clause-number {
+      position: absolute;
+      top: 14px;
+      left: 16px;
+      color: var(--orange);
+      font-size: 0.78rem;
+      font-weight: 900;
+    }
+
+    .clause-copy {
+      position: relative;
+      z-index: 1;
+      padding-left: 38px;
+    }
+
+    .clause-copy strong {
+      display: block;
+      color: var(--navy);
+      font-size: 0.87rem;
+    }
+
+    .clause-copy p {
+      margin-top: 5px;
+      color: #394a5b;
+      font-size: 0.77rem;
+      line-height: 1.5;
+    }
+
+    .lawyer-comment {
+      position: absolute;
+      top: 13px;
+      right: -12px;
+      width: 150px;
+      padding: 10px 11px 10px 33px;
+      border-radius: 7px;
+      background: #fffdf9;
+      box-shadow: 0 8px 20px rgba(9, 39, 70, 0.11);
+      transform: rotate(-2deg);
+    }
+
+    .lawyer-comment span {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: 17px;
+      height: 17px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--white);
+      font-size: 0.66rem;
+      font-weight: 900;
+    }
+
+    .lawyer-comment p {
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    .comment-red {
+      border: 1px solid rgba(197, 61, 61, 0.35);
+    }
+
+    .comment-red span {
+      background: var(--red);
+    }
+
+    .comment-red p {
+      color: var(--red);
+    }
+
+    .comment-orange {
+      border: 1px solid rgba(239, 118, 34, 0.38);
+    }
+
+    .comment-orange span {
+      background: var(--orange);
+    }
+
+    .comment-orange p {
+      color: var(--orange-dark);
+    }
+
+    .document-summary {
+      margin: 16px 0 0 16px;
+      padding: 13px 15px;
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 12px;
+      align-items: center;
+      border-radius: 10px;
+      color: var(--white);
+      background: var(--navy);
+    }
+
+    .document-summary > span {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--navy);
+      background: var(--orange);
+      font-weight: 900;
+    }
+
+    .document-summary strong {
+      display: block;
+      font-size: 0.86rem;
+    }
+
+    .document-summary small {
+      display: block;
+      margin-top: 2px;
+      color: rgba(255, 255, 255, 0.68);
+      font-size: 0.7rem;
+    }
+
+    /* FINALNY AUDYT — PORADNIK */
+
+    .ebook-panel-compact {
+      grid-template-columns: minmax(330px, 0.82fr) minmax(0, 1.18fr);
+      max-width: 1080px;
+      margin: 0 auto;
+      align-items: center;
+      background: var(--white);
+    }
+
+    .ebook-panel-compact .ebook-cover-area {
+      min-height: 560px;
+      padding: 28px 20px;
+      align-self: stretch;
+      background: var(--white);
+    }
+
+    .ebook-panel-compact .ebook-cover-image {
+      width: min(455px, 100%);
+      max-height: 520px;
+      object-fit: contain;
+      filter: drop-shadow(0 22px 34px rgba(9, 39, 70, 0.16));
+    }
+
+    .ebook-content-compact {
+      padding: 44px 48px;
+    }
+
+    .ebook-content-compact h2 {
+      max-width: 620px;
+      font-size: clamp(2rem, 3.4vw, 3rem);
+    }
+
+    .ebook-lead {
+      max-width: 600px;
+    }
+
+    .ebook-checklist {
+      max-width: 600px;
+      gap: 11px;
+      margin-top: 22px;
+    }
+
+    .mini-form-compact {
+      width: min(100%, 540px);
+      margin-top: 26px;
+      padding: 22px;
+      gap: 13px;
+    }
+
+    .mini-form-compact h3 {
+      font-size: 1.14rem;
+    }
+
+    .mini-form-compact input {
+      padding: 12px 13px;
+    }
+
+    .mini-form-compact .button {
+      min-height: 50px;
+      padding-top: 12px;
+      padding-bottom: 12px;
+    }
+
+    @media (max-width: 1000px) {
+      .legal-document-visual {
+        width: min(100%, 610px);
+        margin-right: auto;
+      }
+
+      .ebook-panel-compact {
+        grid-template-columns: 0.9fr 1.1fr;
+      }
+
+      .ebook-content-compact {
+        padding: 38px;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .legal-document {
+        transform: none;
+      }
+
+      .ebook-panel-compact {
+        grid-template-columns: 1fr;
+      }
+
+      .ebook-panel-compact .ebook-cover-area {
+        min-height: 480px;
+      }
+
+      .ebook-content-compact {
+        padding: 38px;
+      }
+
+      .mini-form-compact {
+        margin-right: auto;
+        margin-left: auto;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .legal-document-visual {
+        padding: 6px 0 12px;
+      }
+
+      .legal-document {
+        padding: 20px 15px;
+      }
+
+      .legal-document-header {
+        padding-left: 8px;
+      }
+
+      .document-meta {
+        padding-left: 8px;
+      }
+
+      .document-clause {
+        padding: 13px 10px;
+      }
+
+      .clause-number {
+        left: 10px;
+      }
+
+      .clause-copy {
+        padding-left: 36px;
+      }
+
+      .document-clause::after {
+        right: 12px;
+      }
+
+      .lawyer-comment {
+        position: relative;
+        top: auto;
+        right: auto;
+        width: auto;
+        margin: 10px 0 0 36px;
+        transform: none;
+      }
+
+      .document-summary {
+        margin-left: 8px;
+      }
+
+      .ebook-panel-compact .ebook-cover-area {
+        min-height: 400px;
+        padding: 22px 12px;
+      }
+
+      .ebook-panel-compact .ebook-cover-image {
+        max-height: 410px;
+      }
+
+      .ebook-content-compact {
+        padding: 28px;
+      }
+    }
+
+</style>
 </head>
 <body>
 <header>
@@ -1662,49 +2060,98 @@
 
 </div>
 </div>
-<div class="scan-card reveal">
-<div class="scan-top">
-<div>
-<span class="eyebrow">Analiza zlecenia</span>
-<div class="scan-title">Fragment dokumentu po kontroli</div>
-</div>
-<span class="scan-status">⚠ wykryto ryzyko</span>
-</div>
-<div class="paper">
-<div class="paper-line">
-<strong>Termin załadunku:</strong> zgodnie ze zleceniem.
-          </div>
-<div class="paper-line marked">
-            W przypadku jakiegokolwiek opóźnienia przewoźnik zapłaci
-            karę umowną w wysokości 100% frachtu.
-            <div class="law-note">
-              Czy kara obejmuje również zdarzenia niezależne od przewoźnika?
-            </div>
-</div>
-<div class="paper-line warning">
-            Termin płatności wynosi 60 dni od otrzymania kompletu
-            prawidłowo wystawionych dokumentów.
-            <div class="law-note" style="color: var(--orange);">
-              Od kiedy naprawdę zaczyna biec termin płatności?
-            </div>
-</div>
-<div class="paper-line marked">
-            Zleceniodawca jest uprawniony do jednostronnego potrącenia
-            wszelkich należności z wynagrodzenia przewoźnika.
-            <div class="law-note">
-              Jedno zdanie może pomniejszyć cały fracht.
-            </div>
-</div>
+
+<div class="legal-document-visual reveal" aria-label="Przykładowe zlecenie transportowe z komentarzami prawnika">
+  <div class="legal-document-shadow"></div>
+
+  <div class="legal-document">
+    <div class="legal-document-header">
+      <div>
+        <span class="document-kicker">ZLECENIE TRANSPORTOWE</span>
+        <strong>Warunki wykonania przewozu</strong>
+      </div>
+
+      <span class="document-review-stamp">
+        analiza prawna
+      </span>
+    </div>
+
+    <div class="document-meta">
+      <span>Numer: ZT/2026/0711</span>
+      <span>Fracht: 1 250 EUR</span>
+    </div>
+
+    <div class="document-clause">
+      <span class="clause-number">§ 8</span>
+      <div class="clause-copy">
+        <strong>Kary umowne</strong>
+        <p>
+          W przypadku jakiegokolwiek opóźnienia przewoźnik zapłaci
+          karę umowną w wysokości 100% frachtu.
+        </p>
+      </div>
+
+      <aside class="lawyer-comment comment-red">
+        <span>!</span>
+        <p>
+          Kara może obejmować także zdarzenia niezależne od przewoźnika.
+        </p>
+      </aside>
+    </div>
+
+    <div class="document-clause">
+      <span class="clause-number">§ 11</span>
+      <div class="clause-copy">
+        <strong>Termin płatności</strong>
+        <p>
+          Termin płatności wynosi 60 dni od otrzymania kompletu
+          prawidłowo wystawionych dokumentów.
+        </p>
+      </div>
+
+      <aside class="lawyer-comment comment-orange">
+        <span>?</span>
+        <p>
+          Termin nie musi biec od dnia rozładunku.
+        </p>
+      </aside>
+    </div>
+
+    <div class="document-clause">
+      <span class="clause-number">§ 14</span>
+      <div class="clause-copy">
+        <strong>Potrącenie należności</strong>
+        <p>
+          Zleceniodawca może potrącić wszelkie należności
+          z wynagrodzenia przewoźnika.
+        </p>
+      </div>
+
+      <aside class="lawyer-comment comment-red">
+        <span>!</span>
+        <p>
+          Możliwe jednostronne pomniejszenie frachtu.
+        </p>
+      </aside>
+    </div>
+
+    <div class="document-summary">
+      <span>3</span>
+      <div>
+        <strong>ryzyka wykryte przed akceptacją</strong>
+        <small>Sprawdź zapis, zanim stanie się kosztem.</small>
+      </div>
+    </div>
+  </div>
 </div>
 
-</div>
 </div>
 <div class="trust-strip">
 <div class="container trust-grid">
 <div class="trust-item"><span>§</span> Materiał przygotowany przez prawnika</div>
 <div class="trust-item">
 <span>7</span>
-          Siedem najczęstszych czerwonych flag
+          7 najczęstszych czerwonych flag
         </div>
 <div class="trust-item">
 <span>PDF</span>
@@ -1721,9 +2168,9 @@
 <section class="section" id="ryzyka">
 <div class="container">
 <div class="section-intro reveal">
-<span class="eyebrow">Siedem czerwonych flag</span>
+<span class="eyebrow">7 czerwonych flag</span>
 <h2>
-          Siedem zapisów, przez które przewoźnicy tracą pieniądze
+          7 zapisów, przez które przewoźnicy tracą pieniądze
         </h2>
 <p class="lead">Poznaj 7 zapisów, które najczęściej prowadzą do kar umownych, potrąceń frachtu i problemów z płatnością.</p>
 </div>
@@ -1803,80 +2250,124 @@
 </div>
 </div>
 </section>
+
 <!-- 3. PORADNIK -->
 <section class="section section-light" id="poradnik">
-<div class="container">
-<div class="ebook-panel reveal">
-<div class="ebook-cover-area"><img alt="Poradnik Akademii TSL – 7 zapisów w zleceniu transportowym" class="ebook-cover-image" src="mokeup.png"/></div>
-<div class="ebook-content">
-<span class="eyebrow">Bezpłatny poradnik</span>
-<h2>
-            Zobacz, co naprawdę podpisujesz
-          </h2>
-<p>
-            To nie jest ogólny wykład z prawa. To praktyczny materiał,
-            który pomoże Ci szybciej wychwycić miejsca wymagające
-            dodatkowej uwagi przed przyjęciem transportu.
+  <div class="container">
+    <div class="ebook-panel ebook-panel-compact reveal">
+
+      <div class="ebook-cover-area">
+        <img
+          class="ebook-cover-image"
+          src="mokeup.png"
+          alt="Poradnik Akademii TSL – 7 zapisów w zleceniu transportowym"
+          loading="lazy"
+        >
+      </div>
+
+      <div class="ebook-content ebook-content-compact">
+        <span class="eyebrow">Bezpłatny poradnik</span>
+
+        <h2>
+          Zobacz 7 zapisów, które mogą kosztować Cię fracht
+        </h2>
+
+        <p class="ebook-lead">
+          Praktyczny PDF, który pomoże Ci szybciej rozpoznać miejsca
+          wymagające szczególnej uwagi przed zaakceptowaniem zlecenia.
+        </p>
+
+        <ul class="checklist ebook-checklist">
+          <li>
+            rozpoznasz 7 klauzul prowadzących do kar, potrąceń
+            i opóźnień w płatności,
+          </li>
+
+          <li>
+            zobaczysz przykłady zapisów występujących
+            w rzeczywistych zleceniach transportowych,
+          </li>
+
+          <li>
+            poznasz konsekwencje zaakceptowania ryzykownych
+            postanowień,
+          </li>
+
+          <li>
+            otrzymasz checklistę do wykorzystania
+            w codziennej pracy firmy.
+          </li>
+        </ul>
+
+        <form
+          class="mini-form mini-form-compact"
+          name="pobranie-poradnika"
+          method="POST"
+          data-netlify="true"
+        >
+          <input
+            type="hidden"
+            name="form-name"
+            value="pobranie-poradnika"
+          >
+
+          <h3>Odbierz bezpłatny poradnik</h3>
+
+          <div class="form-grid">
+            <label>
+              Imię
+              <input
+                type="text"
+                name="imie"
+                autocomplete="given-name"
+                required
+              >
+            </label>
+
+            <label>
+              Adres e-mail
+              <input
+                type="email"
+                name="email"
+                autocomplete="email"
+                required
+              >
+            </label>
+          </div>
+
+          <label class="consent">
+            <input
+              type="checkbox"
+              name="zgoda"
+              value="tak"
+              required
+            >
+
+            <span>
+              Chcę otrzymać poradnik oraz informacje związane
+              z materiałami Akademii TSL. Zgodę mogę wycofać
+              w dowolnym momencie.
+            </span>
+          </label>
+
+          <button
+            class="button button-primary button-full"
+            type="submit"
+          >
+            Tak, wyślij mi poradnik
+          </button>
+
+          <p class="form-note">
+            Poradnik jest bezpłatny. Materiał ma charakter informacyjny
+            i nie zastępuje indywidualnej porady prawnej.
           </p>
-<ul class="checklist">
-<li>
-              rozpoznasz siedem klauzul, które najczęściej prowadzą
-              do kar, potrąceń i opóźnień w płatności,
-            </li>
-<li>
-              zobaczysz przykłady zapisów występujących w rzeczywistych
-              zleceniach transportowych,
-            </li>
-<li>
-              dowiesz się, jakie konsekwencje może wywołać zaakceptowanie
-              każdej z opisanych klauzul,
-            </li>
-<li>
-              poznasz pytania, które warto zadać zleceniodawcy
-              przed zaakceptowaniem dokumentu,
-            </li>
-<li>
-              otrzymasz prostą checklistę kontroli zlecenia
-              do wykorzystania przez właściciela, spedytora lub dyspozytora,
-            </li>
-<li>
-              zyskasz schemat szybkiej weryfikacji bez czytania
-              każdego zlecenia jak rozprawy doktorskiej.
-            </li>
-</ul>
-<form class="mini-form" data-netlify="true" method="POST" name="pobranie-poradnika">
-<input name="form-name" type="hidden" value="pobranie-poradnika"/>
-<h3>Wyślij mi bezpłatny poradnik</h3>
-<div class="form-grid">
-<label>
-                Imię
-                <input autocomplete="given-name" name="imie" required="" type="text"/>
-</label>
-<label>
-                Adres e-mail
-                <input autocomplete="email" name="email" required="" type="email"/>
-</label>
-</div>
-<label class="consent">
-<input name="zgoda" required="" type="checkbox" value="tak"/>
-<span>
-                Chcę otrzymać poradnik oraz informacje związane
-                z materiałami Akademii TSL. Zgodę mogę wycofać
-                w dowolnym momencie.
-              </span>
-</label>
-<button class="button button-primary button-full" type="submit">
-              Tak, wyślij mi poradnik
-            </button>
-<p class="form-note">
-              Poradnik jest bezpłatny. Materiał ma charakter informacyjny
-              i nie zastępuje indywidualnej porady prawnej.
-            </p>
-</form>
-</div>
-</div>
-</div>
+        </form>
+      </div>
+
+    </div>
+  </div>
 </section>
+
 <!-- 4. SZKOLENIE -->
 <section class="section" id="szkolenie">
 <div class="container training-grid">
@@ -1988,8 +2479,6 @@
 </aside>
 </div>
 </section>
-<!-- 5. KONSEKWENCJE -->
-
 
   <!-- O AUTORCE -->
 
@@ -2097,67 +2586,13 @@
     </div>
   </section>
 
-<section class="section section-navy">
-<div class="container">
-<div class="section-intro center reveal">
-<span class="eyebrow">Koszt jednego zdania</span>
-<h2 style="color: white;">
-          Jeden zapis może kosztować znacznie więcej niż szkolenie.
-        </h2>
-<p class="lead" style="color: rgba(255,255,255,.72);">
-          Celem nie jest czytanie zlecenia godzinami. Celem jest wiedzieć,
-          które miejsca sprawdzić natychmiast.
-        </p>
-</div>
-<div class="consequence-grid">
-<article class="consequence-card reveal">
-<div class="consequence-icon">100%</div>
-<h3>Cały fracht</h3>
-<p>
-            Kara umowna może zostać określona jako równowartość
-            całego wynagrodzenia za przewóz.
-          </p>
-</article>
-<article class="consequence-card reveal">
-<div class="consequence-icon">−€</div>
-<h3>Potrącenie</h3>
-<p>
-            Zleceniodawca może pomniejszyć płatność, zanim przewoźnik
-            zdąży zakwestionować obciążenie.
-          </p>
-</article>
-<article class="consequence-card reveal">
-<div class="consequence-icon">60+</div>
-<h3>Miesiące oczekiwania</h3>
-<p>
-            Błąd w dokumentach może przesunąć początek biegu
-            terminu płatności.
-          </p>
-</article>
-<article class="consequence-card reveal">
-<div class="consequence-icon">§</div>
-<h3>Kosztowny spór</h3>
-<p>
-            Brak reakcji na początku utrudnia późniejsze odzyskanie
-            pełnej należności.
-          </p>
-</article>
-</div>
-</div>
-</section>
-<!-- 6. DLA KOGO -->
-
-<!-- 7. O AUTORCE -->
-
-<!-- 8. DLACZEGO AKADEMIA -->
-
 <!-- 9. CTA -->
 <section class="section">
 <div class="container">
 <div class="mid-cta reveal">
 <div>
 <span class="eyebrow">Pierwszy krok</span>
-<h2>Sprawdź siedem zapisów przed kolejną akceptacją</h2>
+<h2>Sprawdź 7 zapisów przed kolejną akceptacją</h2>
 <p>
             Pobierz bezpłatny poradnik i przekaż checklistę osobom,
             które przyjmują zlecenia w Twojej firmie.
