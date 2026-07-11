@@ -752,8 +752,8 @@
     .training-steps {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-top: 30px;
+      gap: 12px;
+      margin-top: 24px;
     }
 
     .training-step {
@@ -851,18 +851,20 @@
 
     .author-grid {
       display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 64px;
-      align-items: center;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: stretch;
     }
 
     .author-image-wrap {
       position: relative;
-      min-height: 590px;
+      min-height: 520px;
+      aspect-ratio: 4 / 5;
       overflow: hidden;
       border-radius: 28px;
       background: var(--light);
       box-shadow: var(--shadow);
+      align-self: stretch;
     }
 
 
@@ -896,7 +898,7 @@
     .author-image {
       width: 100%;
       height: 100%;
-      min-height: 590px;
+      min-height: 520px;
       object-fit: cover;
       object-position: center top;
     }
@@ -912,8 +914,8 @@
 
     .author-checks {
       display: grid;
-      gap: 13px;
-      margin: 28px 0 30px;
+      gap: 11px;
+      margin: 24px 0 24px;
       list-style: none;
     }
 
@@ -933,33 +935,23 @@
       font-size: 1.05rem;
       font-weight: 900;
     }
-
-
-    .author-role-line {
-      margin-top: 4px;
-      color: var(--orange);
-      font-size: 0.92rem;
-      font-weight: 900;
-      letter-spacing: 0.02em;
-    }
-
-    .author-intro strong {
+.author-intro strong {
       color: var(--navy);
     }
 
     .author-expertise-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-top: 30px;
+      gap: 12px;
+      margin-top: 24px;
     }
 
     .author-expertise-card {
-      min-height: 104px;
-      padding: 18px;
+      min-height: 88px;
+      padding: 15px;
       display: grid;
-      grid-template-columns: 46px 1fr;
-      gap: 14px;
+      grid-template-columns: 42px 1fr;
+      gap: 12px;
       align-items: center;
       border: 1px solid var(--border);
       border-radius: 17px;
@@ -968,8 +960,8 @@
     }
 
     .author-expertise-card > span {
-      width: 46px;
-      height: 46px;
+      width: 42px;
+      height: 42px;
       display: grid;
       place-items: center;
       border-radius: 13px;
@@ -995,8 +987,8 @@
     }
 
     .author-signature {
-      margin-top: 30px;
-      padding-top: 24px;
+      margin-top: 24px;
+      padding-top: 20px;
       border-top: 1px solid var(--border);
     }
 
@@ -1147,8 +1139,8 @@
     }
 
     .benefit-card span {
-      width: 46px;
-      height: 46px;
+      width: 42px;
+      height: 42px;
       margin-bottom: 20px;
       display: grid;
       place-items: center;
@@ -1472,7 +1464,11 @@
       }
 
 
-      .author-image-wrap,
+      .author-image-wrap {
+        min-height: 500px;
+        aspect-ratio: 4 / 5;
+      }
+
       .author-image {
         min-height: 500px;
       }
@@ -1554,7 +1550,11 @@
       }
 
 
-      .author-image-wrap,
+      .author-image-wrap {
+        min-height: 420px;
+        aspect-ratio: 4 / 5;
+      }
+
       .author-image {
         min-height: 420px;
       }
@@ -1992,12 +1992,7 @@
         <h2>
           Adwokat, wykładowca i szkoleniowiec branży TSL
         </h2>
-
-        <p class="author-role-line">
-          Adwokat • Wykładowca • Szkoleniowiec • Twórca Akademii TSL
-        </p>
-
-        <ul class="author-checks">
+<ul class="author-checks">
           <li>
             Adwokat specjalizująca się w prawie transportowym,
             gospodarczym i obsłudze przedsiębiorców
@@ -2020,29 +2015,23 @@
         </ul>
 
         <p class="author-intro">
-          Nazywam się <strong>Jolanta Czesielska-Biel</strong>.
-          Od lat pomagam przedsiębiorcom bezpiecznie prowadzić działalność
-          gospodarczą oraz skutecznie rozwiązywać problemy prawne związane
-          z transportem, spedycją i logistyką.
-        </p>
-
-        <p style="margin-top: 18px;">
-          Jako adwokat prowadzę własną kancelarię, która na co dzień
-          obsługuje przedsiębiorców i podmioty gospodarcze. Analizuję
-          zlecenia transportowe i umowy, reprezentuję klientów w sporach,
-          wspieram ich w dochodzeniu należnego frachtu oraz pomagam
-          ograniczać ryzyko prawne jeszcze zanim pojawi się problem.
+          Nazywam się <strong>adw. Jolanta Czesielska-Biel</strong>.
+          Jako adwokat prowadzę własną kancelarię, w której wspieram
+          przedsiębiorców i podmioty gospodarcze, w szczególności
+          z branży transportowej, spedycyjnej i logistycznej. Analizuję
+          umowy i zlecenia transportowe, reprezentuję klientów w sporach
+          oraz pomagam skutecznie dochodzić należnego frachtu.
         </p>
 
         <p style="margin-top: 18px;">
           Równolegle prowadzę wykłady, szkolenia i warsztaty z zakresu
           prawa gospodarczego oraz prawa transportowego. Akademia TSL
-          powstała po to, aby przekazywać tę wiedzę w praktyczny,
-          zrozumiały sposób i pomagać przedsiębiorcom podejmować
-          bezpieczniejsze decyzje w codziennej pracy.
+          powstała po to, aby przekazywać przedsiębiorcom praktyczną
+          wiedzę prawną w prosty sposób i pomagać im ograniczać ryzyko
+          jeszcze przed powstaniem problemu.
         </p>
 
-        <div class="author-expertise-grid">
+<div class="author-expertise-grid">
           <article class="author-expertise-card">
             <span>⚖</span>
             <div>
@@ -2079,7 +2068,7 @@
         <div class="author-signature">
           <strong>Jolanta Czesielska-Biel</strong>
           <span>
-            Adwokat • Wykładowca • Szkoleniowiec • Twórca Akademii TSL
+            Wykładowca • Szkoleniowiec • Twórca Akademii TSL
           </span>
         </div>
       </div>
