@@ -2165,6 +2165,140 @@
       }
     }
 
+
+    /* OSTATECZNE POPRAWKI WIZUALNE */
+
+    /* 1. Pasek zaufania bez odstępu od hero */
+    .hero {
+      padding-bottom: 0;
+    }
+
+    .trust-strip {
+      margin-top: 36px;
+      border-bottom: 1px solid rgba(9, 39, 70, 0.1);
+    }
+
+    /* 2. Mockup poradnika na spójnym białym tle */
+    .ebook-panel-compact {
+      background: var(--white);
+    }
+
+    .ebook-panel-compact .ebook-cover-area {
+      background: var(--white);
+      border-right: 1px solid var(--border);
+    }
+
+    .ebook-panel-compact .ebook-cover-image {
+      background: var(--white);
+      mix-blend-mode: normal;
+    }
+
+    /* 3. Mniej pustej przestrzeni wokół CTA "Pierwszy krok" */
+    .section:has(.mid-cta) {
+      padding-top: 48px;
+      padding-bottom: 48px;
+    }
+
+    .mid-cta {
+      padding: 34px 38px;
+    }
+
+    /* 4. Zwarty kontakt i mniejszy formularz */
+    #kontakt.section {
+      padding-top: 64px;
+      padding-bottom: 64px;
+    }
+
+    #kontakt .contact-grid {
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 42px;
+      align-items: start;
+    }
+
+    #kontakt .contact-form {
+      max-width: 620px;
+      padding: 28px;
+      gap: 14px;
+      border-radius: 20px;
+    }
+
+    #kontakt .contact-form input,
+    #kontakt .contact-form textarea {
+      margin-top: 6px;
+      padding: 12px 13px;
+    }
+
+    #kontakt .contact-form textarea {
+      min-height: 120px;
+    }
+
+    #kontakt .contact-form .button {
+      min-height: 50px;
+      padding-top: 12px;
+      padding-bottom: 12px;
+    }
+
+    #kontakt .contact-data {
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    #kontakt .contact-item {
+      padding: 16px;
+    }
+
+    @media (max-width: 860px) {
+      .ebook-panel-compact .ebook-cover-area {
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .section:has(.mid-cta) {
+        padding-top: 38px;
+        padding-bottom: 38px;
+      }
+
+      #kontakt .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      #kontakt .contact-form {
+        max-width: none;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .trust-strip {
+        margin-top: 28px;
+      }
+
+      .mid-cta {
+        padding: 28px;
+      }
+
+      #kontakt.section {
+        padding-top: 52px;
+        padding-bottom: 52px;
+      }
+
+      #kontakt .contact-form {
+        padding: 24px;
+      }
+    }
+
+
+    .section-mid-cta {
+      padding-top: 48px;
+      padding-bottom: 48px;
+    }
+
+    @media (max-width: 860px) {
+      .section-mid-cta {
+        padding-top: 38px;
+        padding-bottom: 38px;
+      }
+    }
+
 </style>
 </head>
 <body>
