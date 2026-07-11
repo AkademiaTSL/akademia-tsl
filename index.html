@@ -934,6 +934,66 @@
       font-weight: 900;
     }
 
+
+    .author-role-line {
+      margin-top: 4px;
+      color: var(--orange);
+      font-size: 0.92rem;
+      font-weight: 900;
+      letter-spacing: 0.02em;
+    }
+
+    .author-intro strong {
+      color: var(--navy);
+    }
+
+    .author-expertise-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .author-expertise-card {
+      min-height: 104px;
+      padding: 18px;
+      display: grid;
+      grid-template-columns: 46px 1fr;
+      gap: 14px;
+      align-items: center;
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      background: var(--white);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .author-expertise-card > span {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      color: var(--white);
+      background: var(--navy);
+      font-size: 1.05rem;
+      font-weight: 900;
+    }
+
+    .author-expertise-card strong {
+      display: block;
+      color: var(--navy);
+      font-size: 1rem;
+      line-height: 1.25;
+    }
+
+    .author-expertise-card small {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 0.8rem;
+      line-height: 1.4;
+    }
+
     .author-signature {
       margin-top: 30px;
       padding-top: 24px;
@@ -1480,6 +1540,7 @@
       .consequence-grid,
       .benefit-grid,
       .author-points,
+      .author-expertise-grid,
       .form-grid,
       .footer-grid,
       .trust-grid {
@@ -1908,6 +1969,7 @@
 </section>
 <!-- 5. KONSEKWENCJE -->
 
+
   <!-- O AUTORCE -->
 
   <section class="section author-section" id="o-autorce">
@@ -1919,54 +1981,106 @@
           src="10.06.26.png"
           alt="Adwokat Jolanta Czesielska-Biel – Akademia TSL"
           loading="lazy"
-          data-fallback-index="0"
-          data-fallbacks='["10.06.26.jpg","10.06.26.jpeg","10.06.26.webp","10.06.26.PNG","10.06.26.JPG","10.06.26.JPEG","10.06.26.WEBP"]'
-          onerror="
-            const sources = JSON.parse(this.dataset.fallbacks || '[]');
-            const index = Number(this.dataset.fallbackIndex || 0);
-            if (index < sources.length) {
-              this.dataset.fallbackIndex = String(index + 1);
-              this.src = sources[index];
-            } else {
-              this.onerror = null;
-              this.style.display = 'none';
-              this.parentElement.classList.add('image-missing');
-            }
-          "
         >
       </div>
 
       <div class="author-content reveal">
         <span class="eyebrow">
-          O autorce
+          Poznaj autorkę poradnika
         </span>
 
         <h2>
-          Praktyczna wiedza prawna dla branży transportowej
+          Adwokat, wykładowca i szkoleniowiec branży TSL
         </h2>
 
+        <p class="author-role-line">
+          Adwokat • Wykładowca • Szkoleniowiec • Twórca Akademii TSL
+        </p>
+
         <ul class="author-checks">
-          <li>Adwokat specjalizująca się w branży TSL</li>
-          <li>Szkolenia dla przewoźników i spedytorów</li>
-          <li>Praktyczna wiedza oparta na rzeczywistych sprawach</li>
-          <li>Wsparcie przedsiębiorców z całej Polski</li>
+          <li>
+            Adwokat specjalizująca się w prawie transportowym,
+            gospodarczym i obsłudze przedsiębiorców
+          </li>
+
+          <li>
+            Wykładowca i szkoleniowiec prowadzący zajęcia z prawa
+            gospodarczego oraz zagadnień branży TSL
+          </li>
+
+          <li>
+            Założycielka własnej kancelarii adwokackiej obsługującej
+            przedsiębiorców i podmioty gospodarcze
+          </li>
+
+          <li>
+            Praktyczna wiedza oparta na rzeczywistych sporach,
+            zleceniach transportowych i problemach przewoźników
+          </li>
         </ul>
 
         <p class="author-intro">
-          Nazywam się Jolanta Czesielska-Biel. Od lat pomagam
-          przedsiębiorcom analizować zlecenia transportowe, unikać
-          kosztownych błędów oraz skutecznie dochodzić należnego frachtu.
+          Nazywam się <strong>Jolanta Czesielska-Biel</strong>.
+          Od lat pomagam przedsiębiorcom bezpiecznie prowadzić działalność
+          gospodarczą oraz skutecznie rozwiązywać problemy prawne związane
+          z transportem, spedycją i logistyką.
         </p>
 
         <p style="margin-top: 18px;">
-          Ten poradnik powstał na podstawie rzeczywistych spraw i problemów,
-          z którymi na co dzień zgłaszają się do mnie przewoźnicy
-          i spedytorzy.
+          Jako adwokat prowadzę własną kancelarię, która na co dzień
+          obsługuje przedsiębiorców i podmioty gospodarcze. Analizuję
+          zlecenia transportowe i umowy, reprezentuję klientów w sporach,
+          wspieram ich w dochodzeniu należnego frachtu oraz pomagam
+          ograniczać ryzyko prawne jeszcze zanim pojawi się problem.
         </p>
+
+        <p style="margin-top: 18px;">
+          Równolegle prowadzę wykłady, szkolenia i warsztaty z zakresu
+          prawa gospodarczego oraz prawa transportowego. Akademia TSL
+          powstała po to, aby przekazywać tę wiedzę w praktyczny,
+          zrozumiały sposób i pomagać przedsiębiorcom podejmować
+          bezpieczniejsze decyzje w codziennej pracy.
+        </p>
+
+        <div class="author-expertise-grid">
+          <article class="author-expertise-card">
+            <span>⚖</span>
+            <div>
+              <strong>Adwokat</strong>
+              <small>Prawo gospodarcze i transportowe</small>
+            </div>
+          </article>
+
+          <article class="author-expertise-card">
+            <span>🎓</span>
+            <div>
+              <strong>Wykładowca</strong>
+              <small>Zajęcia i warsztaty dla przedsiębiorców</small>
+            </div>
+          </article>
+
+          <article class="author-expertise-card">
+            <span>🚛</span>
+            <div>
+              <strong>Szkoleniowiec TSL</strong>
+              <small>Szkolenia dla przewoźników i spedytorów</small>
+            </div>
+          </article>
+
+          <article class="author-expertise-card">
+            <span>★</span>
+            <div>
+              <strong>Twórca Akademii TSL</strong>
+              <small>Praktyczna edukacja prawna dla branży</small>
+            </div>
+          </article>
+        </div>
 
         <div class="author-signature">
           <strong>Jolanta Czesielska-Biel</strong>
-          <span>Adwokat • Prawo transportowe • Akademia TSL</span>
+          <span>
+            Adwokat • Wykładowca • Szkoleniowiec • Twórca Akademii TSL
+          </span>
         </div>
       </div>
 
