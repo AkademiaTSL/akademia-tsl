@@ -2300,6 +2300,24 @@
     }
 
 </style>
+
+<!-- MailerLite Universal -->
+<script>
+    (function(w,d,e,u,f,l,n){
+        w[f]=w[f]||function(){
+            (w[f].q=w[f].q||[]).push(arguments);
+        };
+        l=d.createElement(e);
+        l.async=1;
+        l.src=u;
+        n=d.getElementsByTagName(e)[0];
+        n.parentNode.insertBefore(l,n);
+    })(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+
+    ml('account', '2474474');
+</script>
+<!-- End MailerLite Universal -->
+
 </head>
 <body>
 <header>
@@ -2579,70 +2597,7 @@
           </li>
         </ul>
 
-        <form
-  class="mini-form mini-form-compact"
-  name="pobranie-poradnika"
-  method="POST"
-  action="/dziekujemy.html"
-  data-netlify="true"
->
-  <input
-    type="hidden"
-    name="form-name"
-    value="pobranie-poradnika"
-  >
-
-  <h3>Odbierz bezpłatny poradnik</h3>
-
-  <div class="form-grid">
-    <label>
-      Imię
-      <input
-        type="text"
-        name="imie"
-        autocomplete="given-name"
-        required
-      >
-    </label>
-
-    <label>
-      Adres e-mail
-      <input
-        type="email"
-        name="email"
-        autocomplete="email"
-        required
-      >
-    </label>
-  </div>
-
-  <label class="consent">
-    <input
-      type="checkbox"
-      name="zgoda"
-      value="tak"
-      required
-    >
-
-    <span>
-      Chcę otrzymać poradnik oraz informacje związane
-      z materiałami Akademii TSL. Zgodę mogę wycofać
-      w dowolnym momencie.
-    </span>
-  </label>
-
-  <button
-    class="button button-primary button-full"
-    type="submit"
-  >
-    Tak, wyślij mi poradnik
-  </button>
-
-  <p class="form-note">
-    Poradnik jest bezpłatny. Materiał ma charakter informacyjny
-    i nie zastępuje indywidualnej porady prawnej.
-  </p>
-</form>
+       <div class="ml-embedded" data-form="3jhakw"></div>
       </div>
 
     </div>
